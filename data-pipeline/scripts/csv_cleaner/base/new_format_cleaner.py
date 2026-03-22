@@ -33,7 +33,7 @@ COLUMN_ALIASES = {
 	"unidade_sigla": [],
 }
 
-ALLOWED_UNITS = ("ML", "LITRO", "GR", "KG", "PCTE", "ROLO", "MC/CX", "UNIDADES", "UN")
+ALLOWED_UNITS = ("ML", "LITRO", "GR", "KG", "PCTE", "ROLO", "MC/CX", "UNIDADES", "UN", "DZ")
 DEDUP_COLUMNS = ["produto", "qtd_embalagem", "unidade_sigla"]
 TEMP_PRECO_COLUMN = "__preco_num__"
 TEMP_GROUP_SIZE_COLUMN = "__group_size__"
@@ -67,6 +67,7 @@ def _normalize_produto(value: str) -> str:
 		return ""
 	text = str(value)
 	text = re.sub(r"\(\s*\+\s*\)\s*BARATO", "", text, flags=re.IGNORECASE)
+	text = re.sub(r"\bLATA\b", "", text, flags=re.IGNORECASE)
 	text = re.sub(r"\s+", " ", text)
 	return text.strip()
 
@@ -79,6 +80,21 @@ def _parse_preco(value: str) -> float:
 		return float(text)
 	except ValueError:
 		return float("inf")
+
+
+def _normalize_qtd_embalagem(value: str) -> str:
+	if pd.isna(value):
+		return ""
+	text = str(value).strip().replace(",", ".")
+	if text == "":
+		return ""
+	try:
+		number = float(text)
+		if number.is_integer():
+			return str(int(number))
+		return f"{number:g}"
+	except ValueError:
+		return text
 
 
 def _normalize_codigo_categoria(value: str) -> str:
@@ -193,6 +209,7 @@ def clean_new_format_csv(input_file: Path, output_file: Path, target_date: str) 
 	)
 	cleaned[["produto", "qtd_embalagem", "unidade_sigla"]] = produto_split_df
 	cleaned["produto"] = cleaned["produto"].apply(_normalize_produto)
+	cleaned["qtd_embalagem"] = cleaned["qtd_embalagem"].apply(_normalize_qtd_embalagem)
 	cleaned["codigo_categoria"] = cleaned["codigo_categoria"].apply(_normalize_codigo_categoria)
 	cleaned[TEMP_PRECO_COLUMN] = cleaned["preco"].apply(_parse_preco)
 
