@@ -2,12 +2,9 @@
 """Dedicated cleaner for legacy old portal CSV files (07/2022-06/2023)."""
 
 from __future__ import annotations
-
 from datetime import datetime
 from pathlib import Path
-
 import pandas as pd
-
 from csv_utils import resolve_target_date
 
 
@@ -49,7 +46,7 @@ def _pick_column(frame: pd.DataFrame, aliases: list[str]) -> pd.Series:
     return pd.Series([""] * len(frame), index=frame.index)
 
 
-def clean_legacy_old_portal_csv(input_file: Path, output_file: Path, target_date: str) -> bool:
+def clean_old_format_csv(input_file: Path, output_file: Path, target_date: str) -> bool:
     print(f"\nCleaning legacy old portal: {input_file.name}")
     print("Delimiter: ','")
 

@@ -2,22 +2,18 @@
 """Unified pipeline core with shared download and cleaning abstractions."""
 
 from __future__ import annotations
-
 from dataclasses import dataclass
 from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Callable, Dict, Optional
-
-import pandas as pd
 import requests
 from dateutil.relativedelta import relativedelta
-
 from csv_utils import (
     extract_date_from_filename,
     print_section,
-    resolve_target_date,
 )
-from legacy_old_portal_cleaner import clean_legacy_old_portal_csv
+from csv_cleaner.legacy_format_cleaner import clean_old_format_csv
+from csv_cleaner.new_format_cleaner import clean_new_format_csv
 
 
 SCRIPT_DIR = Path(__file__).parent
@@ -38,172 +34,6 @@ def parse_date_iso(date_str: str) -> Optional[datetime]:
         return datetime.strptime(date_str, "%Y-%m-%d")
     except (ValueError, TypeError):
         return None
-
-
-def _read_csv_with_encodings(input_file: Path, delimiter: str, encodings: list[str]) -> Optional[pd.DataFrame]:
-    for encoding in encodings:
-        try:
-            df = pd.read_csv(
-                input_file,
-                delimiter=delimiter,
-                dtype={"data_pesquisa": str},
-                on_bad_lines="skip",
-                engine="c",
-                encoding=encoding,
-            )
-            print(f"✓ File read with encoding: {encoding}")
-            return df
-        except (UnicodeDecodeError, LookupError):
-            continue
-        except Exception as exc:
-            print(f"✗ Error reading CSV with {encoding}: {exc}")
-            return None
-    return None
-
-
-def _extract_quantity(desc: str) -> str:
-    if pd.isna(desc) or not desc:
-        return ""
-    parts = str(desc).rsplit("-", 1)
-    return parts[1].strip() if len(parts) == 2 else ""
-
-
-def _clean_description(desc: str) -> str:
-    if pd.isna(desc) or not desc:
-        return desc
-    parts = str(desc).rsplit("-", 1)
-    return parts[0].strip() if len(parts) == 2 else desc
-
-
-def clean_old_portal_csv(input_file: Path, output_file: Path, target_date: str) -> bool:
-    print(f"\nCleaning: {input_file.name}")
-    print("Delimiter: ','")
-
-    try:
-        df = pd.read_csv(
-            input_file,
-            delimiter=",",
-            dtype={"data_pesquisa": str},
-            on_bad_lines="skip",
-            engine="c",
-        )
-    except Exception as exc:
-        print(f"✗ Error reading CSV: {exc}")
-        return False
-
-    print(f"Rows before filtering: {len(df)}")
-
-    closest_date = resolve_target_date(
-        df,
-        target_date,
-        target_parser=parse_date_br,
-        df_parser=parse_date_br,
-        df_date_format_str="%d/%m/%Y",
-        max_days_offset=7,
-    )
-    if closest_date is None:
-        return False
-
-    df_filtered = df[df["data_pesquisa"] == closest_date].copy()
-    print(f"Rows after filtering by date {closest_date}: {len(df_filtered)}")
-
-    essential_columns = [
-        "data_pesquisa",
-        "id_empresa",
-        "razao_social",
-        "id_produto_classificacao",
-        "produto_classificacao",
-        "id_produto",
-        "produto",
-        "preco_encontrado",
-        "qtd_embalagem",
-    ]
-    available_cols = [col for col in essential_columns if col in df_filtered.columns]
-    df_clean = df_filtered[available_cols].copy()
-
-    before = len(df_clean)
-    df_clean = df_clean.drop_duplicates(subset=["id_empresa", "id_produto", "data_pesquisa"], keep="first")
-    print(f"Duplicates removed: {before - len(df_clean)}")
-
-    df_clean = df_clean.fillna("")
-    df_clean["data_pesquisa"] = pd.to_datetime(df_clean["data_pesquisa"], format="%d/%m/%Y").dt.strftime("%Y-%m-%d")
-
-    try:
-        df_clean.to_csv(output_file, index=False, sep=",")
-        print(f"✓ Cleaned CSV saved: {output_file.name}")
-        print(f"Final rows: {len(df_clean)}")
-        return True
-    except Exception as exc:
-        print(f"✗ Error saving CSV: {exc}")
-        return False
-
-
-def clean_cotacoes_csv(input_file: Path, output_file: Path, target_date: str) -> bool:
-    print(f"\nCleaning: {input_file.name}")
-    print("Delimiter: ';'")
-
-    df = _read_csv_with_encodings(input_file, ";", ["utf-8", "latin-1", "iso-8859-1", "cp1252"])
-    if df is None:
-        print("✗ Error reading CSV: Could not decode file with any supported encoding")
-        return False
-
-    print(f"Rows before filtering: {len(df)}")
-
-    closest_date = resolve_target_date(
-        df,
-        target_date,
-        target_parser=parse_date_br,
-        df_parser=parse_date_iso,
-        df_date_format_str="%Y-%m-%d",
-        max_days_offset=7,
-    )
-    if closest_date is None:
-        return False
-
-    df_filtered = df[df["data_pesquisa"] == closest_date].copy()
-    print(f"Rows after filtering by date {closest_date}: {len(df_filtered)}")
-
-    essential_columns = [
-        "data_pesquisa",
-        "id_empresa",
-        "rede",
-        "codigo_categoria",
-        "id_produto",
-        "descricao",
-        "preco_regular",
-    ]
-    available_cols = [col for col in essential_columns if col in df_filtered.columns]
-    df_clean = df_filtered[available_cols].copy()
-
-    df_clean["qtd_embalagem"] = df_clean["descricao"].apply(_extract_quantity)
-    df_clean["descricao"] = df_clean["descricao"].apply(_clean_description)
-    df_clean = df_clean.rename(columns={"rede": "razao_social"})
-
-    before = len(df_clean)
-    df_clean = df_clean.drop_duplicates(subset=["id_empresa", "id_produto", "data_pesquisa"], keep="first")
-    print(f"Duplicates removed: {before - len(df_clean)}")
-
-    df_clean = df_clean.fillna("")
-    output_columns = [
-        "data_pesquisa",
-        "id_empresa",
-        "razao_social",
-        "codigo_categoria",
-        "id_produto",
-        "descricao",
-        "preco_regular",
-        "qtd_embalagem",
-    ]
-    df_clean = df_clean[output_columns]
-
-    try:
-        df_clean.to_csv(output_file, index=False, sep=";")
-        print(f"✓ Cleaned CSV saved: {output_file.name}")
-        print(f"Final rows: {len(df_clean)}")
-        return True
-    except Exception as exc:
-        print(f"✗ Error saving CSV: {exc}")
-        return False
 
 
 def _generate_monthly_dates(start: datetime, end: datetime, include_end_always: bool) -> list[datetime]:
@@ -328,8 +158,8 @@ DATASETS: Dict[str, DatasetConfig] = {
         key="old_portal",
         title="Old Portal Legacy (2022-2023)",
         raw_subdir="downloaded_files_old_portal",
-        cleaned_subdir="old_portal",
-        cleaner=clean_legacy_old_portal_csv,
+        cleaned_subdir="old_format",
+        cleaner=clean_old_format_csv,
         download_base_url="https://dadosabertos.c3sl.ufpr.br/curitiba/CliqueEconomia/",
         download_start=datetime(2022, 7, 20),
         download_end_provider=lambda: datetime(2023, 6, 20),
@@ -342,7 +172,7 @@ DATASETS: Dict[str, DatasetConfig] = {
         title="Cotacoes Old Portal (2023-2024)",
         raw_subdir="downloaded_files_cotacoes",
         cleaned_subdir="cotacoes_old_portal",
-        cleaner=clean_cotacoes_csv,
+        cleaner=clean_new_format_csv,
         download_base_url="https://dadosabertos.c3sl.ufpr.br/curitiba/CliqueEconomia/",
         download_start=datetime(2023, 7, 20),
         download_end_provider=lambda: datetime(2024, 12, 20),
@@ -355,8 +185,8 @@ DATASETS: Dict[str, DatasetConfig] = {
         key="cotacoes_new",
         title="Cotacoes New Portal (2025+)",
         raw_subdir="downloaded_files_cotacoes",
-        cleaned_subdir="cotacoes_new_portal",
-        cleaner=clean_cotacoes_csv,
+        cleaned_subdir="new_format",
+        cleaner=clean_new_format_csv,
         download_base_url="https://mid-dadosabertos.curitiba.pr.gov.br/CliqueEconomia/",
         download_start=datetime(2025, 1, 20),
         download_end_provider=_current_month_day_20,

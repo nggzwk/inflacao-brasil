@@ -4,12 +4,10 @@
 import argparse
 import sys
 from pathlib import Path
-
 SCRIPT_DIR = Path(__file__).resolve().parent
 SCRIPTS_ROOT = SCRIPT_DIR.parent
 if str(SCRIPTS_ROOT) not in sys.path:
     sys.path.insert(0, str(SCRIPTS_ROOT))
-
 from csv_utils import print_results_summary  # noqa: E402
 from pipeline_core import DATASETS, download_all, download_dataset  # noqa: E402
 
