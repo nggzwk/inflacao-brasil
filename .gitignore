@@ -30,7 +30,8 @@ Thumbs.db
 *.sqlite
 *.sqlite3
 downloaded_files*/
-cleaned_files*/
+/data-pipeline/data/cleaned/new_format/
+/data-pipeline/data/cleaned/old_format/
 
 # Temporary files
 *.tmp

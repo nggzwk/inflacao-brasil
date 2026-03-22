@@ -12,14 +12,15 @@ from csv_utils import (
     extract_date_from_filename,
     print_section,
 )
-from csv_cleaner.legacy_format_cleaner import clean_old_format_csv
-from csv_cleaner.new_format_cleaner import clean_new_format_csv
+from csv_cleaner.base.legacy_format_cleaner import clean_old_format_csv
+from csv_cleaner.base.new_format_cleaner import clean_new_format_csv
 
 
 SCRIPT_DIR = Path(__file__).parent
 DATA_DIR = SCRIPT_DIR.parent / "data"
 RAW_DIR = DATA_DIR / "raw"
 CLEANED_DIR = DATA_DIR / "cleaned"
+STANDARDIZED_DIR = DATA_DIR / "standardized"
 
 
 def parse_date_br(date_str: str) -> Optional[datetime]:
@@ -171,7 +172,7 @@ DATASETS: Dict[str, DatasetConfig] = {
         key="cotacoes_old",
         title="Cotacoes Old Portal (2023-2024)",
         raw_subdir="downloaded_files_cotacoes",
-        cleaned_subdir="cotacoes_old_portal",
+        cleaned_subdir="new_format",
         cleaner=clean_new_format_csv,
         download_base_url="https://dadosabertos.c3sl.ufpr.br/curitiba/CliqueEconomia/",
         download_start=datetime(2023, 7, 20),

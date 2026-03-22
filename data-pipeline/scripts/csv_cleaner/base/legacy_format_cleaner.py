@@ -22,7 +22,7 @@ REQUIRED_COLUMNS = [
 COLUMN_ALIASES = {
     "data_pesquisa": ["data_pesquisa"],
     "id_empresa": ["id_empresa"],
-    "razao_social": ["razao_social"],
+    "razao_social": ["rede"],
     "codigo_categoria": ["id_produto_classificacao"],
     "id_produto": ["id_produto"],
     "produto": ["produto"],
