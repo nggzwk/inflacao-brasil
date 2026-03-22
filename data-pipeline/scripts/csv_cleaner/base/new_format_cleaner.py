@@ -34,6 +34,11 @@ COLUMN_ALIASES = {
 }
 
 ALLOWED_UNITS = ("ML", "LITRO", "GR", "KG", "PCTE", "ROLO", "MC/CX", "UNIDADES", "UN")
+DEDUP_COLUMNS = ["produto", "qtd_embalagem", "unidade_sigla"]
+TEMP_PRECO_COLUMN = "__preco_num__"
+TEMP_GROUP_SIZE_COLUMN = "__group_size__"
+TEMP_GROUP_RANK_COLUMN = "__group_rank__"
+TEMP_CODIGO_CATEGORIA_COLUMN = "__codigo_categoria_num__"
 
 
 def _parse_date_br(value: str):
@@ -55,6 +60,50 @@ def _pick_column(frame: pd.DataFrame, aliases: list[str]) -> pd.Series:
 		if alias in frame.columns:
 			return frame[alias]
 	return pd.Series([""] * len(frame), index=frame.index)
+
+
+def _normalize_produto(value: str) -> str:
+	if pd.isna(value):
+		return ""
+	text = str(value)
+	text = re.sub(r"\(\s*\+\s*\)\s*BARATO", "", text, flags=re.IGNORECASE)
+	text = re.sub(r"\s+", " ", text)
+	return text.strip()
+
+
+def _parse_preco(value: str) -> float:
+	if pd.isna(value):
+		return float("inf")
+	text = str(value).strip().replace(",", ".")
+	try:
+		return float(text)
+	except ValueError:
+		return float("inf")
+
+
+def _normalize_codigo_categoria(value: str) -> str:
+	if pd.isna(value):
+		return ""
+	text = str(value).strip().replace(",", ".")
+	if text == "":
+		return ""
+	try:
+		number = float(text)
+		if number.is_integer():
+			return str(int(number))
+		return text
+	except ValueError:
+		return text
+
+
+def _select_output_rows(frame: pd.DataFrame) -> pd.DataFrame:
+	frame = frame.sort_values(by=TEMP_PRECO_COLUMN, ascending=True, kind="stable")
+	frame[TEMP_GROUP_SIZE_COLUMN] = frame.groupby(DEDUP_COLUMNS)["produto"].transform("size")
+	frame[TEMP_GROUP_RANK_COLUMN] = frame.groupby(DEDUP_COLUMNS).cumcount()
+	return frame[
+		((frame[TEMP_GROUP_SIZE_COLUMN] > 1) & (frame[TEMP_GROUP_RANK_COLUMN] == 1))
+		| ((frame[TEMP_GROUP_SIZE_COLUMN] == 1) & (frame[TEMP_GROUP_RANK_COLUMN] == 0))
+	]
 
 
 def _read_csv_with_encodings(input_file: Path, delimiter: str, encodings: list[str]) -> pd.DataFrame | None:
@@ -131,12 +180,6 @@ def clean_new_format_csv(input_file: Path, output_file: Path, target_date: str) 
 	cleaned = pd.DataFrame(index=filtered.index)
 	for output_column in REQUIRED_COLUMNS:
 		cleaned[output_column] = _pick_column(filtered, COLUMN_ALIASES[output_column])
-	cleaned["__id_empresa__"] = _pick_column(filtered, COLUMN_ALIASES["id_empresa"])
-
-	before = len(cleaned)
-	cleaned = cleaned.drop_duplicates(subset=["__id_empresa__", "id_produto", "data_pesquisa"], keep="first")
-	cleaned = cleaned.drop(columns=["__id_empresa__"])
-	print(f"Duplicates removed: {before - len(cleaned)}")
 
 	cleaned = cleaned.fillna("")
 	produto_split = cleaned.apply(
@@ -149,6 +192,14 @@ def clean_new_format_csv(input_file: Path, output_file: Path, target_date: str) 
 		columns=["produto", "qtd_embalagem", "unidade_sigla"],
 	)
 	cleaned[["produto", "qtd_embalagem", "unidade_sigla"]] = produto_split_df
+	cleaned["produto"] = cleaned["produto"].apply(_normalize_produto)
+	cleaned["codigo_categoria"] = cleaned["codigo_categoria"].apply(_normalize_codigo_categoria)
+	cleaned[TEMP_PRECO_COLUMN] = cleaned["preco"].apply(_parse_preco)
+
+	before = len(cleaned)
+	cleaned = _select_output_rows(cleaned)
+	print(f"Duplicates removed: {before - len(cleaned)}")
+
 	cleaned["data_pesquisa"] = pd.to_datetime(
 		cleaned["data_pesquisa"],
 		format="%Y-%m-%d",
@@ -156,7 +207,25 @@ def clean_new_format_csv(input_file: Path, output_file: Path, target_date: str) 
 	).dt.strftime("%Y-%m-%d")
 	cleaned["data_pesquisa"] = cleaned["data_pesquisa"].fillna("")
 
+	cleaned[TEMP_CODIGO_CATEGORIA_COLUMN] = pd.to_numeric(cleaned["codigo_categoria"], errors="coerce")
+	cleaned = cleaned.sort_values(
+		by=[TEMP_CODIGO_CATEGORIA_COLUMN, "codigo_categoria"],
+		ascending=[True, True],
+		kind="stable",
+		na_position="last",
+	)
+	cleaned = cleaned.drop(
+		columns=[
+			TEMP_PRECO_COLUMN,
+			TEMP_GROUP_SIZE_COLUMN,
+			TEMP_GROUP_RANK_COLUMN,
+			TEMP_CODIGO_CATEGORIA_COLUMN,
+		]
+	)
+	cleaned = cleaned[REQUIRED_COLUMNS]
+
 	try:
+		output_file.parent.mkdir(parents=True, exist_ok=True)
 		cleaned.to_csv(output_file, index=False, sep=";")
 		print(f"✓ Cleaned CSV saved: {output_file.name}")
 		print(f"Final rows: {len(cleaned)}")
