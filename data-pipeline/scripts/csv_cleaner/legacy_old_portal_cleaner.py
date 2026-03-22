@@ -13,28 +13,25 @@ from csv_utils import resolve_target_date
 
 REQUIRED_COLUMNS = [
     "data_pesquisa",
-    "id_empresa",
     "razao_social",
-    "id_categoria",
-    "categoria",
+    "codigo_categoria",
     "id_produto",
-    "descricao",
+    "produto",
     "preco",
-    "qtd",
-    "unidade"
+    "qtd_embalagem",
+    "unidade_sigla",
 ]
 
 COLUMN_ALIASES = {
     "data_pesquisa": ["data_pesquisa"],
     "id_empresa": ["id_empresa"],
-    "razao_social": ["razao_social", "rede"],
-    "id_categoria": ["id_categoria", "id_produto_classificacao"],
-    "categoria": ["categoria", "produto_classificacao"],
+    "razao_social": ["razao_social"],
+    "codigo_categoria": ["id_produto_classificacao"],
     "id_produto": ["id_produto"],
-    "descricao": ["descricao", "produto"],
-    "preco": ["preco", "preco_encontrado"],
-    "qtd": ["qtd", "qtd_embalagem"],
-    "unidade": ["unidade_sigla"]
+    "produto": ["produto"],
+    "preco": ["preco_encontrado"],
+    "qtd_embalagem": ["qtd_embalagem"],
+    "unidade_sigla": ["unidade_sigla"],
 }
 
 
@@ -92,9 +89,11 @@ def clean_legacy_old_portal_csv(input_file: Path, output_file: Path, target_date
     cleaned = pd.DataFrame(index=filtered.index)
     for output_column in REQUIRED_COLUMNS:
         cleaned[output_column] = _pick_column(filtered, COLUMN_ALIASES[output_column])
+    cleaned["__id_empresa__"] = _pick_column(filtered, COLUMN_ALIASES["id_empresa"])
 
     before = len(cleaned)
-    cleaned = cleaned.drop_duplicates(subset=["id_empresa", "id_produto", "data_pesquisa"], keep="first")
+    cleaned = cleaned.drop_duplicates(subset=["__id_empresa__", "id_produto", "data_pesquisa"], keep="first")
+    cleaned = cleaned.drop(columns=["__id_empresa__"])
     print(f"Duplicates removed: {before - len(cleaned)}")
 
     cleaned = cleaned.fillna("")
