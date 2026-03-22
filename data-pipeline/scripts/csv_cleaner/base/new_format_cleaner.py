@@ -12,7 +12,7 @@ from csv_utils import resolve_target_date
 
 REQUIRED_COLUMNS = [
 	"data_pesquisa",
-	"razao_social",
+	"rede",
 	"codigo_categoria",
 	"id_produto",
 	"produto",
@@ -24,7 +24,7 @@ REQUIRED_COLUMNS = [
 COLUMN_ALIASES = {
 	"data_pesquisa": ["data_pesquisa"],
 	"id_empresa": ["id_empresa"],
-	"razao_social": ["razao_social", "rede"],
+	"rede": ["rede"],
 	"codigo_categoria": ["codigo_categoria"],
 	"id_produto": ["id_produto"],
 	"produto": ["descricao"],

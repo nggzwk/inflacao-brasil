@@ -6,6 +6,8 @@ from dataclasses import dataclass
 from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Callable, Dict, Optional
+
+import pandas as pd
 import requests
 from dateutil.relativedelta import relativedelta
 from csv_utils import (
@@ -109,6 +111,56 @@ class DatasetConfig:
     fallback_days: int
     include_end_always: bool = False
     file_matcher: Callable[[str], bool] = lambda _: True
+    dedupe_cleaned_files: bool = False
+
+
+def _cleaned_file_signature(file_path: Path) -> Optional[tuple[str, int]]:
+    try:
+        frame = pd.read_csv(file_path, usecols=["data_pesquisa"], dtype=str, on_bad_lines="skip", engine="c")
+    except Exception as exc:
+        print(f"⚠ Could not read file signature for {file_path.name}: {exc}")
+        return None
+
+    if "data_pesquisa" not in frame.columns:
+        return None
+
+    row_count = len(frame)
+    unique_dates = frame["data_pesquisa"].fillna("").astype(str).str.strip().unique()
+    if len(unique_dates) == 0:
+        return None
+
+    return unique_dates[0], row_count
+
+
+def _remove_duplicate_cleaned_files(output_dir: Path) -> int:
+    cleaned_files = sorted(output_dir.glob("cleaned_*.csv"))
+    if not cleaned_files:
+        return 0
+
+    signatures: Dict[tuple[str, int], Path] = {}
+    removed = 0
+
+    for file_path in cleaned_files:
+        signature = _cleaned_file_signature(file_path)
+        if signature is None:
+            continue
+
+        existing = signatures.get(signature)
+        if existing is None:
+            signatures[signature] = file_path
+            continue
+
+        file_path.unlink(missing_ok=True)
+        removed += 1
+        print(
+            "🗑 Removed duplicate cleaned file: "
+            f"{file_path.name} (same data_pesquisa and row count as {existing.name})"
+        )
+
+    if removed:
+        print(f"✓ Removed {removed} duplicate cleaned file(s) in {output_dir.name}")
+
+    return removed
 
 
 def _filename_old_portal(date: datetime) -> str:
@@ -167,6 +219,7 @@ DATASETS: Dict[str, DatasetConfig] = {
         download_filename=_filename_old_portal,
         fallback_days=11,
         file_matcher=_match_legacy_old_filename,
+        dedupe_cleaned_files=True,
     ),
     "cotacoes_old": DatasetConfig(
         key="cotacoes_old",
@@ -229,6 +282,9 @@ def process_dataset(dataset_key: str) -> bool:
         output_file = output_dir / f"cleaned_{csv_file.name}"
         if not config.cleaner(csv_file, output_file, target_date):
             failed += 1
+
+    if config.dedupe_cleaned_files:
+        _remove_duplicate_cleaned_files(output_dir)
 
     return failed == 0
 
