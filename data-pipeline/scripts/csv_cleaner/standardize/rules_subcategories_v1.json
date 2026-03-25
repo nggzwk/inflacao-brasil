@@ -1,0 +1,2651 @@
+{
+  "version": "v1",
+  "id_strategy": "global_unique_by_category_range",
+  "notes": "Faixas sugeridas: categoria 1 -> 10000, categoria 2 -> 20000, ..., categoria 18 -> 180000. Cada categoria deve ter uma subcategoria OUTROS.",
+  "subcategories": [
+    {
+      "id": 10001,
+      "category_id": 1,
+      "name": "Filé de pescada",
+      "items": ["FILE DE PESCADA"]
+    },
+    {
+      "id": 10002,
+      "category_id": 1,
+      "name": "Filé de tilápia",
+      "items": ["FILE DE TILAPIA", "FILÉ DE TILÁPIA"]
+    },
+    {
+      "id": 10003,
+      "category_id": 1,
+      "name": "Posta de peixe",
+      "items": ["POSTA DE PEIXE"]
+    },
+    {
+      "id": 10004,
+      "category_id": 1,
+      "name": "Peixe congelado",
+      "items": ["PEIXE CONGELADO"]
+    },
+    {
+      "id": 10005,
+      "category_id": 1,
+      "name": "Sardinha congelada",
+      "items": ["SARDINHA CONGELADA"]
+    },
+    {
+      "id": 10006,
+      "category_id": 1,
+      "name": "Tilápia empanada",
+      "items": ["TILAPIA EMPANADA"]
+    },
+    {
+      "id": 10007,
+      "category_id": 1,
+      "name": "Asa de frango",
+      "items": [
+        "ASA DE FRANGO CONGELADA",
+        "COXINHA",
+        "COXINHAS DA ASA CONGELADAS"
+      ]
+    },
+    {
+      "id": 10008,
+      "category_id": 1,
+      "name": "Coração de galinha",
+      "items": ["CORACAO DE GALINHA"]
+    },
+    {
+      "id": 10009,
+      "category_id": 1,
+      "name": "Coxa e sobrecoxa",
+      "items": ["COXA E SOBRE-COXA CONGELADA"]
+    },
+    {
+      "id": 10010,
+      "category_id": 1,
+      "name": "Fígado de frango",
+      "items": ["FIGADO DE FRANGO"]
+    },
+    {
+      "id": 10011,
+      "category_id": 1,
+      "name": "Filé de peito de frango sem osso",
+      "items": ["FILE DE PEITO DE FRANGO S/OSSO"]
+    },
+    {
+      "id": 10012,
+      "category_id": 1,
+      "name": "Frango a passarinho",
+      "items": ["FRANGO A PASSARINHO"]
+    },
+    {
+      "id": 10013,
+      "category_id": 1,
+      "name": "Frango inteiro",
+      "items": ["FRANGO CONGELADO", "FRANGO INTEIRO CONGELADO"]
+    },
+    {
+      "id": 10014,
+      "category_id": 1,
+      "name": "Moela de frango",
+      "items": ["MOELA DE FRANGO"]
+    },
+    {
+      "id": 10015,
+      "category_id": 1,
+      "name": "Steak de frango",
+      "items": ["STEAK DE FRANGO EMPANADO"]
+    },
+    {
+      "id": 10016,
+      "category_id": 1,
+      "name": "Almôndega bovina",
+      "items": ["ALMONDEGA", "ALMONDEGA BOVINA CONGELADA"]
+    },
+    {
+      "id": 10017,
+      "category_id": 1,
+      "name": "Alcatra com maminha sem osso",
+      "items": ["CARNE BOVINA ALCATRA COM MAMINHA S/ OSSO"]
+    },
+    {
+      "id": 10018,
+      "category_id": 1,
+      "name": "Alcatra em pedaço sem osso",
+      "items": ["CARNE BOVINA ALCATRA S/ OSSO (PEDACO)"]
+    },
+    {
+      "id": 10019,
+      "category_id": 1,
+      "name": "Contra filé com osso",
+      "items": ["CARNE BOVINA CONTRA FILE C/ OSSO"]
+    },
+    {
+      "id": 10020,
+      "category_id": 1,
+      "name": "Contra filé sem osso",
+      "items": ["CARNE BOVINA CONTRA FILE S/ OSSO"]
+    },
+    {
+      "id": 10021,
+      "category_id": 1,
+      "name": "Costela ponta",
+      "items": ["CARNE BOVINA COSTELA PONTA"]
+    },
+    {
+      "id": 10022,
+      "category_id": 1,
+      "name": "Costela ripa",
+      "items": ["CARNE BOVINA COSTELA RIPA"]
+    },
+    {
+      "id": 10023,
+      "category_id": 1,
+      "name": "Coxão mole sem osso",
+      "items": ["CARNE BOVINA COXAO MOLE S/ OSSO (PEDACO)"]
+    },
+    {
+      "id": 10024,
+      "category_id": 1,
+      "name": "Filé mignon sem osso",
+      "items": ["CARNE BOVINA FILE MIGNON S/ OSSO"]
+    },
+    {
+      "id": 10025,
+      "category_id": 1,
+      "name": "Fraldinha sem osso",
+      "items": ["CARNE BOVINA FRALDINHA S/ OSSO"]
+    },
+    {
+      "id": 10026,
+      "category_id": 1,
+      "name": "Carne moída congelada",
+      "items": ["CARNE BOVINA MOIDA CONGELADA"]
+    },
+    {
+      "id": 10027,
+      "category_id": 1,
+      "name": "Carne moída de 1ª",
+      "items": ["CARNE BOVINA MOIDA DE 1º"]
+    },
+    {
+      "id": 10028,
+      "category_id": 1,
+      "name": "Músculo com osso",
+      "items": ["CARNE BOVINA MUSCULO C/ OSSO"]
+    },
+    {
+      "id": 10029,
+      "category_id": 1,
+      "name": "Patinho sem osso",
+      "items": ["CARNE BOVINA PATINHO S/ OSSO ( PEDACO )"]
+    },
+    {
+      "id": 10030,
+      "category_id": 1,
+      "name": "Picanha",
+      "items": ["CARNE BOVINA PICANHA"]
+    },
+    {
+      "id": 10031,
+      "category_id": 1,
+      "name": "Posta branca sem osso",
+      "items": ["CARNE BOVINA POSTA BRANCA S/ OSSO ( PEDACO )"]
+    },
+    {
+      "id": 10032,
+      "category_id": 1,
+      "name": "Posta vermelha sem osso",
+      "items": ["CARNE BOVINA POSTA VERMELHA S/ OSSO (PEDACO)"]
+    },
+    {
+      "id": 10033,
+      "category_id": 1,
+      "name": "Charque",
+      "items": ["CHARQUE"]
+    },
+    {
+      "id": 10034,
+      "category_id": 1,
+      "name": "Costela bovina temperada",
+      "items": ["COSTELA BOVINA TEMPERADA"]
+    },
+    {
+      "id": 10035,
+      "category_id": 1,
+      "name": "Fígado bovino",
+      "items": ["FIGADO", "FIGADO BOVINO"]
+    },
+    {
+      "id": 10036,
+      "category_id": 1,
+      "name": "Hambúrguer bovino",
+      "items": ["HAMBURGUER", "HAMBURGUER BOVINO"]
+    },
+    {
+      "id": 10037,
+      "category_id": 1,
+      "name": "Hambúrguer misto",
+      "items": ["HAMBURGUER MISTO"]
+    },
+    {
+      "id": 10038,
+      "category_id": 1,
+      "name": "Bisteca suína",
+      "items": ["BISTECA", "BISTECA CONGELADA FATIADA"]
+    },
+    {
+      "id": 10039,
+      "category_id": 1,
+      "name": "Carne suína congelada",
+      "items": ["CARNE SUINA CONGELADA"]
+    },
+    {
+      "id": 10040,
+      "category_id": 1,
+      "name": "Panceta suína",
+      "items": ["PANCETA SUINA"]
+    },
+    {
+      "id": 10041,
+      "category_id": 1,
+      "name": "Pernil suíno temperado",
+      "items": ["PERNIL SUINO TEMPERADO"]
+    },
+    {
+      "id": 10042,
+      "category_id": 1,
+      "name": "Steak empanado",
+      "items": ["STEAK EMPANADO"]
+    },
+    {
+      "id": 10043,
+      "category_id": 1,
+      "name": "Postas de tilápia",
+      "items": ["POSTAS DE TILAPIA CONGELADA"]
+    },
+    {
+      "id": 10099,
+      "category_id": 1,
+      "name": "Outros",
+      "items": []
+    },
+
+    {
+      "id": 20001,
+      "category_id": 2,
+      "name": "Ovos brancos",
+      "items": ["OVOS TIPO GRANDE", "OVOS BRANCOS"]
+    },
+    {
+      "id": 20002,
+      "category_id": 2,
+      "name": "Ovos caipiras",
+      "items": ["OVO CAIPIRA", "OVOS CAIPIRAS"]
+    },
+    {
+      "id": 20003,
+      "category_id": 2,
+      "name": "Ovos vermelhos",
+      "items": ["OVOS VERMELHOS"]
+    },
+    {
+      "id": 20004,
+      "category_id": 2,
+      "name": "Ovos orgânicos",
+      "items": ["OVOS ORGANICOS", "OVOS ORGÂNICOS"]
+    },
+    {
+      "id": 20099,
+      "category_id": 2,
+      "name": "Outros",
+      "items": []
+    },
+
+    {
+      "id": 30001,
+      "category_id": 3,
+      "name": "Leite longa vida integral",
+      "items": ["LEITE LONGA VIDA INTEGRAL", "LEITE INTEGRAL"]
+    },
+    {
+      "id": 30002,
+      "category_id": 3,
+      "name": "Leite longa vida desnatado",
+      "items": ["LEITE LONGA VIDA DESNATADO", "LEITE DESNATADO"]
+    },
+    {
+      "id": 30003,
+      "category_id": 3,
+      "name": "Leite semidesnatado zero lactose",
+      "items": [
+        "LEITE SEMIDESNATADO ZERO LACTOSE",
+        "LEITE ZERO LACTOSE SEMIDESNATADO"
+      ]
+    },
+    {
+      "id": 30004,
+      "category_id": 3,
+      "name": "Leite zero lactose",
+      "items": ["LEITE ZERO LACTOSE"]
+    },
+    {
+      "id": 30005,
+      "category_id": 3,
+      "name": "Leite em pó integral",
+      "items": ["LEITE EM PO INTEGRAL INSTANTANEO", "LEITE EM PO INTEGRAL"]
+    },
+    {
+      "id": 30006,
+      "category_id": 3,
+      "name": "Leite em pó desnatado",
+      "items": ["LEITE EM PO DESNATADO"]
+    },
+    {
+      "id": 30007,
+      "category_id": 3,
+      "name": "Leite em pó semidesnatado",
+      "items": ["LEITE EM PO SEMIDESNATADO"]
+    },
+    {
+      "id": 30008,
+      "category_id": 3,
+      "name": "Leite longa vida semidesnatado",
+      "items": ["LEITE SEMIDESNATADO"]
+    },
+    {
+      "id": 30999,
+      "category_id": 3,
+      "name": "OUTROS",
+      "items": []
+    },
+
+    {
+      "id": 40001,
+      "category_id": 4,
+      "name": "Arroz parboilizado",
+      "items": ["ARROZ PARBOILIZADO"]
+    },
+    {
+      "id": 40002,
+      "category_id": 4,
+      "name": "Arroz parboilizado integral",
+      "items": ["ARROZ PARBOILIZADO INTEGRAL"]
+    },
+    {
+      "id": 40003,
+      "category_id": 4,
+      "name": "Arroz polido",
+      "items": ["ARROZ POLIDO", "ARROZ BRANCO"]
+    },
+    {
+      "id": 40004,
+      "category_id": 4,
+      "name": "Macarrão instantâneo",
+      "items": [
+        "MACARRAO INSTANTANEO",
+        "MACARRAO INSTANTANEO COPO",
+        "MACARRAO INSTANTANEO ESPAGUETE"
+      ]
+    },
+    {
+      "id": 40005,
+      "category_id": 4,
+      "name": "Macarrão espaguete",
+      "items": ["MACARRAO C/ OVOS ESPAGUETE"]
+    },
+    {
+      "id": 40006,
+      "category_id": 4,
+      "name": "Macarrão espaguete integral",
+      "items": ["MACARRAO ESPAGUETE INTEGRAL"]
+    },
+    {
+      "id": 40007,
+      "category_id": 4,
+      "name": "Macarrão conchinha",
+      "items": ["MACARRAO C/ OVOS CONCHINHA"]
+    },
+    {
+      "id": 40008,
+      "category_id": 4,
+      "name": "Macarrão ninho",
+      "items": ["MACARRAO C/ OVOS NINHO"]
+    },
+    {
+      "id": 40009,
+      "category_id": 4,
+      "name": "Macarrão gravata",
+      "items": ["MACARRAO C/ OVOS GRAVATA"]
+    },
+    {
+      "id": 40010,
+      "category_id": 4,
+      "name": "Macarrão aletria",
+      "items": ["MACARRAO C/ OVOS ALETRIA"]
+    },
+    {
+      "id": 40011,
+      "category_id": 4,
+      "name": "Feijão preto",
+      "items": ["FEIJAO PRETO"]
+    },
+    {
+      "id": 40012,
+      "category_id": 4,
+      "name": "Feijão carioca",
+      "items": ["FEIJÃO CARIOCA"]
+    },
+    {
+      "id": 40013,
+      "category_id": 4,
+      "name": "Feijão de cor",
+      "items": ["FEIJAO DE CORDA", "FEIJAO DE COR"]
+    },
+    {
+      "id": 40014,
+      "category_id": 4,
+      "name": "Feijão vermelho",
+      "items": ["FEIJAO VERMELHO"]
+    },
+    {
+      "id": 40015,
+      "category_id": 4,
+      "name": "Grão de bico",
+      "items": ["GRAO DE BICO"]
+    },
+    {
+      "id": 40016,
+      "category_id": 4,
+      "name": "Lentilha",
+      "items": ["LENTILHA"]
+    },
+    {
+      "id": 40017,
+      "category_id": 4,
+      "name": "Farinha de trigo especial",
+      "items": [
+        "FARINHA DE TRIGO ESPECIAL",
+        "FARINHA DE TRIGO ESPECIAL PREMIUM"
+      ]
+    },
+    {
+      "id": 40018,
+      "category_id": 4,
+      "name": "Farinha de mandioca",
+      "items": ["FARINHA DE MANDIOCA BRANCA", "FARINHA DE MANDIOCA TEMPERADA"]
+    },
+    {
+      "id": 40019,
+      "category_id": 4,
+      "name": "Farofa",
+      "items": ["FAROFA", "FAROFA PRONTA"]
+    },
+    {
+      "id": 40020,
+      "category_id": 4,
+      "name": "Fubá",
+      "items": ["FUBA AMARELO", "FUBÁ"]
+    },
+    {
+      "id": 40021,
+      "category_id": 4,
+      "name": "Farinha de milho",
+      "items": ["FARINHA DE MILHO AMARELA", "FARINHA DE MILHO BRANCA"]
+    },
+    {
+      "id": 40022,
+      "category_id": 4,
+      "name": "Farinha de arroz",
+      "items": ["FARINHA DE ARROZ"]
+    },
+    {
+      "id": 40023,
+      "category_id": 4,
+      "name": "Amido de milho",
+      "items": ["AMIDO DE MILHO"]
+    },
+    {
+      "id": 40024,
+      "category_id": 4,
+      "name": "Tapioca",
+      "items": ["TAPIOCA", "TAPIOCA MASSA PRONTA"]
+    },
+    {
+      "id": 40025,
+      "category_id": 4,
+      "name": "Polvilho",
+      "items": ["POLVILHO AZEDO", "POLVILHO DOCE"]
+    },
+    {
+      "id": 40026,
+      "category_id": 4,
+      "name": "Fécula de batata",
+      "items": ["FECULA DE BATATA"]
+    },
+    {
+      "id": 40027,
+      "category_id": 4,
+      "name": "Canjica",
+      "items": ["CANJICA", "MILHO PARA CANJICA", "CANJICA DE MILHO BRANCA"]
+    },
+    {
+      "id": 40028,
+      "category_id": 4,
+      "name": "Quirera",
+      "items": ["QUIRERA FINA", "QUIRERINHA"]
+    },
+    {
+      "id": 40029,
+      "category_id": 4,
+      "name": "Trigo para quibe",
+      "items": ["TRIGO PARA QUIBE"]
+    },
+    {
+      "id": 40030,
+      "category_id": 4,
+      "name": "Aveia",
+      "items": ["AVEIA EM FLOCOS", "AVEIA EM FLOCOS FINOS"]
+    },
+    {
+      "id": 40031,
+      "category_id": 4,
+      "name": "Milho pipoca",
+      "items": ["MILHO PIPOCA"]
+    },
+    {
+      "id": 40032,
+      "category_id": 4,
+      "name": "Sagu",
+      "items": ["SAGU"]
+    },
+    {
+      "id": 40033,
+      "category_id": 4,
+      "name": "Polenta",
+      "items": ["MISTURA INSTANTANEA PARA POLENTA"]
+    },
+    {
+      "id": 40034,
+      "category_id": 4,
+      "name": "Massa de arroz sem glúten",
+      "items": [
+        "MASSA ALIMENTICIA DE ARROZ PENA ISENTA DE GLUTEN",
+        "MASSA ALIMENTÍCIA DE ARROZ",
+        "MASSA ALIMENTICIA DE ARROZ PARAFUSO ISENTA DE GLUTEN"
+      ]
+    },
+    {
+      "id": 40035,
+      "category_id": 4,
+      "name": "Massa para pastel",
+      "items": ["MASSA PARA PASTEL"]
+    },
+    {
+      "id": 40036,
+      "category_id": 4,
+      "name": "Pães fatiados",
+      "items": ["PAO FATIADO BROA DE GRAOS", "PAO FATIADO PARA LANCHE"]
+    },
+    {
+      "id": 40036,
+      "category_id": 4,
+      "name": "Pipoca para microondas",
+      "items": ["PIPOCA PARA MICROONDAS"]
+    },
+    {
+      "id": 40999,
+      "category_id": 4,
+      "name": "OUTROS",
+      "items": []
+    },
+
+    {
+      "id": 50001,
+      "category_id": 5,
+      "name": "Alho",
+      "items": ["ALHO A GRANEL"]
+    },
+    {
+      "id": 50002,
+      "category_id": 5,
+      "name": "Cebola branca",
+      "items": ["CEBOLA"]
+    },
+    {
+      "id": 50003,
+      "category_id": 5,
+      "name": "Cebola roxa",
+      "items": ["CEBOLA ROXA"]
+    },
+    {
+      "id": 50004,
+      "category_id": 5,
+      "name": "Batata doce",
+      "items": ["BATATA DOCE"]
+    },
+    {
+      "id": 50005,
+      "category_id": 5,
+      "name": "Batata monalisa",
+      "items": ["BATATA MONALISA"]
+    },
+    {
+      "id": 50006,
+      "category_id": 5,
+      "name": "Batata salsa",
+      "items": ["BATATA SALSA"]
+    },
+    {
+      "id": 50007,
+      "category_id": 5,
+      "name": "Cenoura",
+      "items": ["CENOURA"]
+    },
+    {
+      "id": 50008,
+      "category_id": 5,
+      "name": "Tomate longa vida",
+      "items": ["TOMATE LONGA VIDA"]
+    },
+    {
+      "id": 50009,
+      "category_id": 5,
+      "name": "Tomate rasteiro",
+      "items": ["TOMATE RASTEIRO"]
+    },
+    {
+      "id": 50010,
+      "category_id": 5,
+      "name": "Tomate cereja",
+      "items": ["TOMATE CEREJA"]
+    },
+    {
+      "id": 50011,
+      "category_id": 5,
+      "name": "Alface",
+      "items": ["ALFACE", "ALFACE AMERICANA"]
+    },
+    {
+      "id": 50012,
+      "category_id": 5,
+      "name": "Couve manteiga",
+      "items": ["COUVE MANTEIGA"]
+    },
+    {
+      "id": 50013,
+      "category_id": 5,
+      "name": "Acelga",
+      "items": ["ACELGA"]
+    },
+    {
+      "id": 50014,
+      "category_id": 5,
+      "name": "Cheiro verde",
+      "items": ["CHEIRO VERDE"]
+    },
+    {
+      "id": 50015,
+      "category_id": 5,
+      "name": "Salsa",
+      "items": ["SALSA"]
+    },
+    {
+      "id": 50016,
+      "category_id": 5,
+      "name": "Cebolinha",
+      "items": ["CEBOLINHA"]
+    },
+    {
+      "id": 50017,
+      "category_id": 5,
+      "name": "Abóbora",
+      "items": [
+        "ABOBORA CABOTIA",
+        "ABOBORA MORANGA",
+        "ABOBORA KABOTIA",
+        "ABOBORA MENINA"
+      ]
+    },
+    {
+      "id": 50018,
+      "category_id": 5,
+      "name": "Aipim",
+      "items": ["AIPIM", "AIPIM CONGELADO"]
+    },
+    {
+      "id": 50019,
+      "category_id": 5,
+      "name": "Limão taiti",
+      "items": ["LIMAO TAITI"]
+    },
+    {
+      "id": 50020,
+      "category_id": 5,
+      "name": "Limão rosa",
+      "items": ["LIMAO ROSA"]
+    },
+    {
+      "id": 50021,
+      "category_id": 5,
+      "name": "Laranja pera",
+      "items": ["LARANJA PERA"]
+    },
+    {
+      "id": 50022,
+      "category_id": 5,
+      "name": "Laranja bahia",
+      "items": ["LARANJA BAHIA"]
+    },
+    {
+      "id": 50023,
+      "category_id": 5,
+      "name": "Laranja lima",
+      "items": ["LARANJA LIMA"]
+    },
+    {
+      "id": 50024,
+      "category_id": 5,
+      "name": "Banana caturra",
+      "items": ["BANANA CATURRA"]
+    },
+    {
+      "id": 50025,
+      "category_id": 5,
+      "name": "Banana prata",
+      "items": ["BANANA PRATA"]
+    },
+    {
+      "id": 50026,
+      "category_id": 5,
+      "name": "Banana terra",
+      "items": ["BANANA TERRA"]
+    },
+    {
+      "id": 50027,
+      "category_id": 5,
+      "name": "Banana maçã",
+      "items": ["BANANA MACA"]
+    },
+    {
+      "id": 50028,
+      "category_id": 5,
+      "name": "Maçã fuji",
+      "items": ["MACA FUJI"]
+    },
+    {
+      "id": 50029,
+      "category_id": 5,
+      "name": "Maçã gala",
+      "items": ["MACA GALA"]
+    },
+    {
+      "id": 50030,
+      "category_id": 5,
+      "name": "Maçã verde",
+      "items": ["MACA VERDE"]
+    },
+    {
+      "id": 50031,
+      "category_id": 5,
+      "name": "Mamão papaya",
+      "items": ["MAMAO PAPAYA"]
+    },
+    {
+      "id": 50032,
+      "category_id": 5,
+      "name": "Mamão formosa",
+      "items": ["MAMAO FORMOSA"]
+    },
+    {
+      "id": 50033,
+      "category_id": 5,
+      "name": "Pepino comum",
+      "items": ["PEPINO"]
+    },
+    {
+      "id": 50034,
+      "category_id": 5,
+      "name": "Pepino japonês",
+      "items": ["PEPINO JAPONES"]
+    },
+    {
+      "id": 50035,
+      "category_id": 5,
+      "name": "Pimentão verde",
+      "items": ["PIMENTAO VERDE"]
+    },
+    {
+      "id": 50036,
+      "category_id": 5,
+      "name": "Pimentão vermelho",
+      "items": ["PIMENTAO VERMELHO"]
+    },
+    {
+      "id": 50037,
+      "category_id": 5,
+      "name": "Cogumelos",
+      "items": ["COGUMELO", "CHAMPIGNON", "COGUMELO PARIS"]
+    },
+    {
+      "id": 50038,
+      "category_id": 5,
+      "name": "Abacaxi",
+      "items": ["ABACAXI HAWAI", "ABACAXI PEROLA"]
+    },
+    {
+      "id": 50039,
+      "category_id": 5,
+      "name": "Manga palmer",
+      "items": ["MANGA PALMER"]
+    },
+    {
+      "id": 50040,
+      "category_id": 5,
+      "name": "Manga tomy",
+      "items": ["MANGA TOMY"]
+    },
+    {
+      "id": 50041,
+      "category_id": 5,
+      "name": "Pêssego",
+      "items": ["PESSEGO", "PESSEGO NACIONAL"]
+    },
+    {
+      "id": 50042,
+      "category_id": 5,
+      "name": "Caqui fuyu",
+      "items": ["CAQUI FUYU"]
+    },
+    {
+      "id": 50043,
+      "category_id": 5,
+      "name": "Caqui café",
+      "items": ["CAQUI CAFE"]
+    },
+    {
+      "id": 50044,
+      "category_id": 5,
+      "name": "Uva niagara",
+      "items": ["UVA NIAGARA"]
+    },
+    {
+      "id": 50045,
+      "category_id": 5,
+      "name": "Uva itália",
+      "items": ["UVA ITALIA"]
+    },
+    {
+      "id": 50046,
+      "category_id": 5,
+      "name": "Repolho verde",
+      "items": ["REPOLHO VERDE"]
+    },
+    {
+      "id": 50047,
+      "category_id": 5,
+      "name": "Repolho roxo",
+      "items": ["REPOLHO ROXO"]
+    },
+    {
+      "id": 50048,
+      "category_id": 5,
+      "name": "Chuchu",
+      "items": ["CHUCHU"]
+    },
+    {
+      "id": 50049,
+      "category_id": 5,
+      "name": "Beterraba",
+      "items": ["BETERRABA"]
+    },
+    {
+      "id": 50050,
+      "category_id": 5,
+      "name": "Abobrinha verde",
+      "items": ["ABOBRINHA VERDE"]
+    },
+    {
+      "id": 50051,
+      "category_id": 5,
+      "name": "Brócolis",
+      "items": ["BROCOLIS"]
+    },
+    {
+      "id": 50052,
+      "category_id": 5,
+      "name": "Inhame",
+      "items": ["INHAME"]
+    },
+    {
+      "id": 50053,
+      "category_id": 5,
+      "name": "Rabanete",
+      "items": ["RABANETE"]
+    },
+    {
+      "id": 50054,
+      "category_id": 5,
+      "name": "Couve flor",
+      "items": ["COUVE FLOR"]
+    },
+    {
+      "id": 50055,
+      "category_id": 5,
+      "name": "Berinjela",
+      "items": ["BERINJELA"]
+    },
+    {
+      "id": 50056,
+      "category_id": 5,
+      "name": "Vagem",
+      "items": ["VAGEM"]
+    },
+    {
+      "id": 50057,
+      "category_id": 5,
+      "name": "Quiabo",
+      "items": ["QUIABO"]
+    },
+    {
+      "id": 50058,
+      "category_id": 5,
+      "name": "Jabuticaba",
+      "items": ["JABUTICABA"]
+    },
+    {
+      "id": 50059,
+      "category_id": 5,
+      "name": "Ponkan",
+      "items": ["PONKAN"]
+    },
+    {
+      "id": 50060,
+      "category_id": 5,
+      "name": "Melancia",
+      "items": ["MELANCIA"]
+    },
+    {
+      "id": 50061,
+      "category_id": 5,
+      "name": "Agrião",
+      "items": ["AGRIAO"]
+    },
+    {
+      "id": 50062,
+      "category_id": 5,
+      "name": "Rúcula",
+      "items": ["RUCULA"]
+    },
+    {
+      "id": 50063,
+      "category_id": 5,
+      "name": "Mimosa",
+      "items": ["MIMOSA"]
+    },
+    {
+      "id": 50064,
+      "category_id": 5,
+      "name": "Melão amarelo",
+      "items": ["MELAO AMARELO"]
+    },
+    {
+      "id": 50065,
+      "category_id": 5,
+      "name": "Abacate",
+      "items": ["ABACATE"]
+    },
+    {
+      "id": 50066,
+      "category_id": 5,
+      "name": "Goiaba",
+      "items": ["GOIABA"]
+    },
+    {
+      "id": 50067,
+      "category_id": 5,
+      "name": "Pera nacional",
+      "items": ["PERA NACIONAL"]
+    },
+    {
+      "id": 50068,
+      "category_id": 5,
+      "name": "Maracujá",
+      "items": ["MARACUJA"]
+    },
+    {
+      "id": 50069,
+      "category_id": 5,
+      "name": "Morango",
+      "items": ["MORANGO BANDEJA"]
+    },
+    {
+      "id": 50070,
+      "category_id": 5,
+      "name": "Gengibre",
+      "items": ["GENGIBRE"]
+    },
+    {
+      "id": 50071,
+      "category_id": 5,
+      "name": "Kiwi nacional",
+      "items": ["KIWI NACIONAL"]
+    },
+    {
+      "id": 50072,
+      "category_id": 5,
+      "name": "Pinhão",
+      "items": ["PINHAO"]
+    },
+    {
+      "id": 50073,
+      "category_id": 5,
+      "name": "Tangerina",
+      "items": ["TANGERINA"]
+    },
+    {
+      "id": 50074,
+      "category_id": 5,
+      "name": "Ameixa vermelha",
+      "items": ["AMEIXA VERMELHA"]
+    },
+    {
+      "id": 50075,
+      "category_id": 5,
+      "name": "Nectarina",
+      "items": ["NECTARINA"]
+    },
+    {
+      "id": 50076,
+      "category_id": 5,
+      "name": "Figo",
+      "items": ["FIGO"]
+    },
+    {
+      "id": 50077,
+      "category_id": 5,
+      "name": "Milho verde",
+      "items": ["MILHO VERDE (Bandeja)"]
+    },
+    {
+      "id": 50078,
+      "category_id": 5,
+      "name": "Cogumelo shitake",
+      "items": ["SHITAKE"]
+    },
+    {
+      "id": 50079,
+      "category_id": 5,
+      "name": "Alface crespa",
+      "items": ["ALFACE CRESPA"]
+    },
+    {
+      "id": 50079,
+      "category_id": 5,
+      "name": "Alface lisa",
+      "items": ["ALFACE LISA"]
+    },
+
+    {
+      "id": 50999,
+      "category_id": 5,
+      "name": "OUTROS",
+      "items": []
+    },
+
+    {
+      "id": 60001,
+      "category_id": 6,
+      "name": "Óleo de soja",
+      "items": ["OLEO DE SOJA"]
+    },
+    {
+      "id": 60002,
+      "category_id": 6,
+      "name": "Óleo de canola",
+      "items": ["OLEO DE CANOLA"]
+    },
+    {
+      "id": 60003,
+      "category_id": 6,
+      "name": "Azeite de oliva",
+      "items": ["AZEITE DE OLIVA", "AZEITE DE OLIVA EXTRA VIRGEM"]
+    },
+    {
+      "id": 60004,
+      "category_id": 6,
+      "name": "Maionese",
+      "items": ["MAIONESE", "MAIONESE SACHE"]
+    },
+    {
+      "id": 60005,
+      "category_id": 6,
+      "name": "Maionese light",
+      "items": ["MAIONESE LIGHT"]
+    },
+    {
+      "id": 60006,
+      "category_id": 6,
+      "name": "Ketchup",
+      "items": ["CATCHUP BISNAGA", "KETCHUP"]
+    },
+    {
+      "id": 60007,
+      "category_id": 6,
+      "name": "Mostarda",
+      "items": ["MOSTARDA SACHE", "MOSTARDA"]
+    },
+    {
+      "id": 60008,
+      "category_id": 6,
+      "name": "Molho de tomate",
+      "items": ["MOLHO DE TOMATE"]
+    },
+    {
+      "id": 60009,
+      "category_id": 6,
+      "name": "Molho de pimenta",
+      "items": ["MOLHO DE PIMENTA COM ESPECIARIAS"]
+    },
+    {
+      "id": 60010,
+      "category_id": 6,
+      "name": "Banha suína",
+      "items": ["BANHA SUINA", "BANHA SUÍNA USO CULINÁRIO", "BANHA"]
+    },
+    {
+      "id": 60011,
+      "category_id": 6,
+      "name": "Extrato de tomate",
+      "items": ["EXTRATO DE TOMATE"]
+    },
+    {
+      "id": 60012,
+      "category_id": 6,
+      "name": "Passata de tomate",
+      "items": ["PASSATA"]
+    },
+    {
+      "id": 60013,
+      "category_id": 6,
+      "name": "Óleo de milho",
+      "items": ["OLEO DE MILHO"]
+    },
+    {
+      "id": 60014,
+      "category_id": 6,
+      "name": "Óleo de girassol",
+      "items": ["OLEO DE GIRASSOL"]
+    },
+    {
+      "id": 60999,
+      "category_id": 6,
+      "name": "OUTROS",
+      "items": []
+    },
+
+  {
+    "id": 70001,
+    "category_id": 7,
+    "name": "Queijo parmesão ralado",
+    "items": ["QUEIJO PARMESAO RALADO"]
+  },
+  {
+    "id": 70002,
+    "category_id": 7,
+    "name": "Queijo mussarela fatiado",
+    "items": ["QUEIJO MUSSARELA Fatiado", "QUEIJO MUSSARELA"]
+  },
+  {
+    "id": 70003,
+    "category_id": 7,
+    "name": "Queijo mussarela zero lactose",
+    "items": ["QUEIJO MUSSARELA ZERO LACTOSE"]
+  },
+  {
+    "id": 70004,
+    "category_id": 7,
+    "name": "Queijo prato fatiado",
+    "items": ["QUEIJO PRATO FATIADO"]
+  },
+  {
+    "id": 70005,
+    "category_id": 7,
+    "name": "Queijo minas frescal",
+    "items": ["QUEIJO MINAS FRESCAL"]
+  },
+  {
+    "id": 70006,
+    "category_id": 7,
+    "name": "Queijo minas padrão",
+    "items": ["QUEIJO MINAS PADRAO"]
+  },
+  {
+    "id": 70007,
+    "category_id": 7,
+    "name": "Queijo processado e petit suisse",
+    "items": ["QUEIJO PROCESSADO CREMOSO", "QUEIJO PETIT SUISSE", "CREME DE QUEIJO - TIPO QUARK"]
+  },
+  {
+    "id": 70008,
+    "category_id": 7,
+    "name": "Requeijão cremoso",
+    "items": ["REQUEIJAO CREMOSO", "REQUEIJAO CREMOSO LIGHT"]
+  },
+  {
+    "id": 70009,
+    "category_id": 7,
+    "name": "Requeijão cremoso zero lactose",
+    "items": ["REQUEIJAO CREMOSO ZERO LACTOSE"]
+  },
+  {
+    "id": 70010,
+    "category_id": 7,
+    "name": "Requeijão cheddar",
+    "items": ["REQUEIJAO CREMOSO CHEDDAR"]
+  },
+  {
+    "id": 70011,
+    "category_id": 7,
+    "name": "Cream cheese",
+    "items": ["CREAM CHEESE"]
+  },
+  {
+    "id": 70012,
+    "category_id": 7,
+    "name": "Manteiga com sal",
+    "items": ["MANTEIGA EXTRA COM SAL"]
+  },
+  {
+    "id": 70013,
+    "category_id": 7,
+    "name": "Manteiga sem sal",
+    "items": ["MANTEIGA EXTRA SEM SAL"]
+  },
+  {
+    "id": 70014,
+    "category_id": 7,
+    "name": "Manteiga com sal zero lactose",
+    "items": ["MANTEIGA EXTRA C/ SAL ZERO LACTOSE"]
+  },
+  {
+    "id": 70015,
+    "category_id": 7,
+    "name": "Margarina com sal",
+    "items": ["MARGARINA", "MARGARINA C/ SAL", "MARGARINA CREMOSA", "MARGARINA PREMIUM"]
+  },
+  {
+    "id": 70016,
+    "category_id": 7,
+    "name": "Margarina sem sal",
+    "items": ["MARGARINA SEM SAL"]
+  },
+  {
+    "id": 70017,
+    "category_id": 7,
+    "name": "Nata",
+    "items": ["NATA"]
+  },
+  {
+    "id": 70018,
+    "category_id": 7,
+    "name": "Iogurte natural e sabores",
+    "items": ["IOGURTE BANDEJA C/POLPA", "IOGURTE GARRAFA SABORES", "IOGURTE INTEGRAL C/ PEDACOS DE FRUTAS", "IOGURTE SACHE"]
+  },
+  {
+    "id": 70019,
+    "category_id": 7,
+    "name": "Iogurte zero lactose",
+    "items": ["IOGURTE ZERO LACTOSE", "IOGURTE DESNATADO ZERO LACTOSE"]
+  },
+  {
+    "id": 70020,
+    "category_id": 7,
+    "name": "Iogurte grego",
+    "items": ["IOGURTE GREGO"]
+  },
+  {
+    "id": 70021,
+    "category_id": 7,
+    "name": "Bebida láctea",
+    "items": ["BEBIDA LÁCTEA", "BEBIDA LACTEA - Bandeja", "BEBIDA LACTEA - Garrafa", "BEBIDA LACTEA CHOCOLATE"]
+  },
+  {
+    "id": 70022,
+    "category_id": 7,
+    "name": "Leite fermentado",
+    "items": ["LEITE FERMENTADO"]
+  },
+  {
+    "id": 70023,
+    "category_id": 7,
+    "name": "Presunto cozido",
+    "items": ["PRESUNTO COZIDO FATIADO"]
+  },
+  {
+    "id": 70024,
+    "category_id": 7,
+    "name": "Mortadela",
+    "items": ["MORTADELA", "MORTADELA DEFUMADA FATIADA"]
+  },
+  {
+    "id": 70025,
+    "category_id": 7,
+    "name": "Salsicha",
+    "items": ["SALSICHA", "SALSICHA TIPO VIENA"]
+  },
+  {
+    "id": 70026,
+    "category_id": 7,
+    "name": "Linguiça toscana",
+    "items": ["LINGUICA TOSCANA CONGELADO", "LINGUICA TOSCANA FINA CONGELADO"]
+  },
+  {
+    "id": 70027,
+    "category_id": 7,
+    "name": "Linguiça calabresa",
+    "items": ["LINGUICA CALABRESA"]
+  },
+  {
+    "id": 70028,
+    "category_id": 7,
+    "name": "Linguiça de porco e mista",
+    "items": ["LINGUICA SUINA", "LINGUICA MISTA"]
+  },
+  {
+    "id": 70029,
+    "category_id": 7,
+    "name": "Linguiça paio e morcela",
+    "items": ["LINGUICA PAIO", "MORCELA BRANCA"]
+  },
+  {
+    "id": 70030,
+    "category_id": 7,
+    "name": "Bacon",
+    "items": ["BACON SUINO"]
+  },
+  {
+    "id": 70999,
+    "category_id": 7,
+    "name": "OUTROS",
+    "items": []
+  },
+
+  {
+    "id": 80001,
+    "category_id": 8,
+    "name": "Açúcar refinado",
+    "items": ["AÇÚCAR REFINADO"]
+  },
+  {
+    "id": 80002,
+    "category_id": 8,
+    "name": "Açúcar cristal",
+    "items": ["AÇÚCAR CRISTAL"]
+  },
+  {
+    "id": 80003,
+    "category_id": 8,
+    "name": "Açúcar mascavo",
+    "items": ["ACUCAR MASCAVO"]
+  },
+  {
+    "id": 80004,
+    "category_id": 8,
+    "name": "Açúcar demerara",
+    "items": ["ACUCAR DEMERARA"]
+  },
+  {
+    "id": 80005,
+    "category_id": 8,
+    "name": "Adoçante líquido",
+    "items": ["ADOCANTE LIQUIDO"]
+  },
+  {
+    "id": 80006,
+    "category_id": 8,
+    "name": "Adoçante em pó",
+    "items": ["ADOCANTE EM PO"]
+  },
+  {
+    "id": 80007,
+    "category_id": 8,
+    "name": "Sal refinado",
+    "items": ["SAL REFINADO"]
+  },
+  {
+    "id": 80008,
+    "category_id": 8,
+    "name": "Sal marinho",
+    "items": ["SAL MARINHO"]
+  },
+  {
+    "id": 80009,
+    "category_id": 8,
+    "name": "Sal rosa",
+    "items": ["SAL ROSA"]
+  },
+  {
+    "id": 80010,
+    "category_id": 8,
+    "name": "Fermento biológico",
+    "items": ["FERMENTO BIOLOGICO"]
+  },
+  {
+    "id": 80011,
+    "category_id": 8,
+    "name": "Fermento químico",
+    "items": ["FERMENTO QUIMICO"]
+  },
+  {
+    "id": 80012,
+    "category_id": 8,
+    "name": "Caldos concentrados tablete",
+    "items": ["CALDO DE GALINHA/CARNE", "CALDO DE LEGUMES", "CALDO DE CARNE"]
+  },
+  {
+    "id": 80013,
+    "category_id": 8,
+    "name": "Orégano",
+    "items": ["ESPECIARIAS OREGANO DESIDRATADO", "ORÉGANO"]
+  },
+  {
+    "id": 80014,
+    "category_id": 8,
+    "name": "Canela em pó",
+    "items": ["ESPEC CANELA EM PO"]
+  },
+  {
+    "id": 80015,
+    "category_id": 8,
+    "name": "Colorau",
+    "items": ["ESPECIARIAS COLORAU", "COLORAU", "COLORIFERO"]
+  },
+  {
+    "id": 80016,
+    "category_id": 8,
+    "name": "Pimenta do reino",
+    "items": ["ESPECIARIAS PIMENTA DO REINO", "PIMENTA DO REINO", "PIMENTA PRETA"]
+  },
+  {
+    "id": 80017,
+    "category_id": 8,
+    "name": "Pimentas diversas",
+    "items": ["PIMENTA BRANCA", "PIMENTA SIRIA", "PIMENTA CAIENA"]
+  },
+  {
+    "id": 80018,
+    "category_id": 8,
+    "name": "Cúrcuma",
+    "items": ["CURCUMA"]
+  },
+  {
+    "id": 80019,
+    "category_id": 8,
+    "name": "Alho picado",
+    "items": ["TEMPERO ALHO PURO PICADO"]
+  },
+  {
+    "id": 80020,
+    "category_id": 8,
+    "name": "Temperos preparados",
+    "items": ["TEMPERO COMPLETO", "TEMPERO BAIANO"]
+  },
+  {
+    "id": 80021,
+    "category_id": 8,
+    "name": "Batata palha",
+    "items": ["BATATA PALHA"]
+  },
+  {
+    "id": 80999,
+    "category_id": 8,
+    "name": "OUTROS",
+    "items": []
+  },
+
+  {
+    "id": 90001,
+    "category_id": 9,
+    "name": "Café a vácuo",
+    "items": ["CAFE VACUO", "CAFÉ A VÁCUO EXTRA FORTE"]
+  },
+  {
+    "id": 90002,
+    "category_id": 9,
+    "name": "Café solúvel",
+    "items": ["CAFE SOLUVEL"]
+  },
+  {
+    "id": 90003,
+    "category_id": 9,
+    "name": "Café torrado e moído",
+    "items": ["CAFE TORRADO", "CAFE MOIDO"]
+  },
+  {
+    "id": 90004,
+    "category_id": 9,
+    "name": "Chá mate",
+    "items": ["CHA MATE"]
+  },
+  {
+    "id": 90005,
+    "category_id": 9,
+    "name": "Erva mate",
+    "items": ["ERVA MATE"]
+  },
+  {
+    "id": 90006,
+    "category_id": 9,
+    "name": "Chás de ervas e sabores",
+    "items": ["CHA SABORES", "CHA DE FRUTAS"]
+  },
+  {
+    "id": 90007,
+    "category_id": 9,
+    "name": "Chá preto",
+    "items": ["CHA PRETO"]
+  },
+  {
+    "id": 90008,
+    "category_id": 9,
+    "name": "Chá verde",
+    "items": ["CHA VERDE"]
+  },
+  {
+    "id": 90009,
+    "category_id": 9,
+    "name": "Chá branco",
+    "items": ["CHA BRANCO"]
+  },
+  {
+    "id": 90010,
+    "category_id": 9,
+    "name": "Achocolatado em pó",
+    "items": ["ACHOCOLATADO EM PO"]
+  },
+  {
+    "id": 90011,
+    "category_id": 9,
+    "name": "Cereais e flocos",
+    "items": ["FLOCOS DE MILHO - SUCRILHOS"]
+  },
+  {
+    "id": 90012,
+    "category_id": 9,
+    "name": "Granola",
+    "items": ["GRANOLA", "GRANOLA DE CEREAIS"]
+  },
+  {
+    "id": 90013,
+    "category_id": 9,
+    "name": "Barras de cereal e nuts",
+    "items": ["BARRA DE CEREAIS COM 03 UNIDADES", "BARRA DE NUTS"]
+  },
+  {
+    "id": 90014,
+    "category_id": 9,
+    "name": "Farinha láctea e composto",
+    "items": ["FARINHA LÁCTEA", "COMPOSTO LACTEO"]
+  },
+  {
+    "id": 90015,
+    "category_id": 9,
+    "name": "Fórmula infantil",
+    "items": ["FORMULA INFANTIL PRIMEIRA INFANCIA", "FORMULA INFANTIL 1 SEM", "FORMULA INFANTIL 2 SEM"]
+  },
+  {
+    "id": 90016,
+    "category_id": 9,
+    "name": "Mel silvestre",
+    "items": ["MEL SILVESTRE", "MEL SILVESTRE BISNAGA"]
+  },
+  {
+    "id": 90017,
+    "category_id": 9,
+    "name": "Geleia de frutas",
+    "items": ["GELEIA DE FRUTAS"]
+  },
+  {
+    "id": 90018,
+    "category_id": 9,
+    "name": "Frutas secas e cristalizadas",
+    "items": ["FRUTAS SECAS", "FRUTAS CRISTALIZADAS", "AMEIXA SECA"]
+  },
+  {
+    "id": 90019,
+    "category_id": 9,
+    "name": "Castanhas e Nozes",
+    "items": ["CASTANHA DE CAJU TORRADA", "CASTANHA DO PARA", "NOZES SEM CASCA"]
+  },
+  {
+    "id": 90020,
+    "category_id": 9,
+    "name": "Pão de forma e fatiado branco",
+    "items": ["PAO DE FORMA", "PAO FATIADO", "PAO DE LEITE FATIADO"]
+  },
+  {
+    "id": 90021,
+    "category_id": 9,
+    "name": "Pão fatiado integral",
+    "items": ["PAO FATIADO INTEGRAL"]
+  },
+  {
+    "id": 90022,
+    "category_id": 9,
+    "name": "Pão fatiado grãos",
+    "items": ["PAO FATIADO BROA GRAOS"]
+  },
+  {
+    "id": 90023,
+    "category_id": 9,
+    "name": "Pão bisnaguinha",
+    "items": ["PAO BISNAGUINHA"]
+  },
+  {
+    "id": 90024,
+    "category_id": 9,
+    "name": "Pães de broa (Centeio e Milho)",
+    "items": ["PAO FATIADO BROA DE CENTEIO", "PAO FATIADO BROA DE MILHO", "BROA"]
+  },
+  {
+    "id": 90025,
+    "category_id": 9,
+    "name": "Pão de hambúrguer",
+    "items": ["PAO PARA HAMBURGUER"]
+  },
+  {
+    "id": 90026,
+    "category_id": 9,
+    "name": "Pão de hot dog",
+    "items": ["PAO MINI PARA HOT DOG"]
+  },
+  {
+    "id": 90027,
+    "category_id": 9,
+    "name": "Pão francês",
+    "items": ["PAO FRANCES"]
+  },
+  {
+    "id": 90028,
+    "category_id": 9,
+    "name": "Bolinhos",
+    "items": ["BOLINHO RECHEADO", "BOLINHO"]
+  },
+  {
+    "id": 90029,
+    "category_id": 9,
+    "name": "Panetone",
+    "items": ["PANETONE FRUTAS PACOTE", "PANETONE CAIXA", "PANETONE"]
+  },
+  {
+    "id": 90030,
+    "category_id": 9,
+    "name": "Chocotone",
+    "items": ["PANETONE CHOCOLATE", "CHOCOTONE"]
+  },
+  {
+    "id": 90031,
+    "category_id": 9,
+    "name": "Filtro de café",
+    "items": ["FILTRO DE CAFE"]
+  },
+  {
+    "id": 90999,
+    "category_id": 9,
+    "name": "OUTROS",
+    "items": []
+  },
+
+  {
+    "id": 100001,
+    "category_id": 10,
+    "name": "Leite condensado",
+    "items": ["LEITE CONDENSADO"]
+  },
+  {
+    "id": 100002,
+    "category_id": 10,
+    "name": "Leite condensado zero lactose",
+    "items": ["LEITE CONDENSADO ZERO LACTOSE"]
+  },
+  {
+    "id": 100003,
+    "category_id": 10,
+    "name": "Creme de leite",
+    "items": ["CREME DE LEITE"]
+  },
+  {
+    "id": 100004,
+    "category_id": 10,
+    "name": "Creme de leite zero lactose",
+    "items": ["CREME DE LEITE ZERO LACTOSE"]
+  },
+  {
+    "id": 100005,
+    "category_id": 10,
+    "name": "Doce de leite tradicional",
+    "items": ["DOCE DE LEITE TRADICIONAL"]
+  },
+  {
+    "id": 100006,
+    "category_id": 10,
+    "name": "Doce de leite zero lactose",
+    "items": ["DOCE DE LEITE ZERO LACTOSE"]
+  },
+  {
+    "id": 100007,
+    "category_id": 10,
+    "name": "Gelatina com açúcar",
+    "items": ["GELATINA SORTIDA", "GELATINA SABORES", "GELATINA"]
+  },
+  {
+    "id": 100008,
+    "category_id": 10,
+    "name": "Gelatina zero açúcar",
+    "items": ["GELATINA ZERO"]
+  },
+  {
+    "id": 100009,
+    "category_id": 10,
+    "name": "Gelatina sem sabor",
+    "items": ["GELATINA SEM SABOR"]
+  },
+  {
+    "id": 100010,
+    "category_id": 10,
+    "name": "Pó para pudim",
+    "items": ["PO PARA PUDIM"]
+  },
+  {
+    "id": 100011,
+    "category_id": 10,
+    "name": "Pó para pudim zero açúcar",
+    "items": ["PO PARA PUDIM ZERO"]
+  },
+  {
+    "id": 100012,
+    "category_id": 10,
+    "name": "Mistura para bolo",
+    "items": ["MISTURA PARA BOLO"]
+  },
+  {
+    "id": 100013,
+    "category_id": 10,
+    "name": "Coco ralado",
+    "items": ["COCO RALADO"]
+  },
+  {
+    "id": 100014,
+    "category_id": 10,
+    "name": "Chocolate em barra",
+    "items": ["CHOCOLATE EM BARRA"]
+  },
+  {
+    "id": 100015,
+    "category_id": 10,
+    "name": "Caixa de bombom",
+    "items": ["CAIXA DE BOMBOM"]
+  },
+  {
+    "id": 100016,
+    "category_id": 10,
+    "name": "Bombons e chocolates",
+    "items": ["BOMBOM", "BOMBOM CHOCOLATE"]
+  },
+  {
+    "id": 100017,
+    "category_id": 10,
+    "name": "Balas e gomas",
+    "items": ["BALA", "BALA DE GOMA", "BALA DE GELATINA"]
+  },
+  {
+    "id": 100018,
+    "category_id": 10,
+    "name": "Bolacha doce",
+    "items": ["BOLACHA DOCE TRADICIONAL", "BOLACHA DOCE GLACEADO"]
+  },
+  {
+    "id": 100019,
+    "category_id": 10,
+    "name": "Pão de mel",
+    "items": ["PAO DE MEL"]
+  },
+  {
+    "id": 100020,
+    "category_id": 10,
+    "name": "Pé de moleque e torrone",
+    "items": ["PE DE MOLEQUE", "TORRONE"]
+  },
+  {
+    "id": 100021,
+    "category_id": 10,
+    "name": "Frutas em calda",
+    "items": ["PÊSSEGOS EM CALDA"]
+  },
+  {
+    "id": 100022,
+    "category_id": 10,
+    "name": "Goiabada e doces de fruta",
+    "items": ["GOIABADA", "DOCE DE FRUTAS"]
+  },
+  {
+    "id": 100023,
+    "category_id": 10,
+    "name": "Granulado",
+    "items": ["GRANULADO CHOCOLATE"]
+  },
+  {
+    "id": 100999,
+    "category_id": 10,
+    "name": "OUTROS",
+    "items": []
+  },
+
+  {
+    "id": 110001,
+    "category_id": 11,
+    "name": "Ervilha em conserva",
+    "items": ["ERVILHA EM CONSERVA", "ERVILHA"]
+  },
+  {
+    "id": 110002,
+    "category_id": 11,
+    "name": "Milho verde em conserva",
+    "items": ["MILHO VERDE EM CONSERVA"]
+  },
+  {
+    "id": 110003,
+    "category_id": 11,
+    "name": "Palmito em conserva",
+    "items": ["CONSERVA PALMITO"]
+  },
+  {
+    "id": 110004,
+    "category_id": 11,
+    "name": "Azeitona verde inteira",
+    "items": ["AZEITONA EM CONSERVA - Sache", "AZEITONA VERDE INTEIRAS"]
+  },
+  {
+    "id": 110005,
+    "category_id": 11,
+    "name": "Azeitona verde fatiada",
+    "items": ["AZEITONA VERDES FATIADA"]
+  },
+  {
+    "id": 110006,
+    "category_id": 11,
+    "name": "Azeitona recheada",
+    "items": ["AZEITONA RECHEADA"]
+  },
+  {
+    "id": 110007,
+    "category_id": 11,
+    "name": "Azeitona roxa",
+    "items": ["AZEITONA ROXA"]
+  },
+  {
+    "id": 110008,
+    "category_id": 11,
+    "name": "Pepino em conserva",
+    "items": ["PEPINO EM CONSERVA INTEIRO", "PEPINO EM CONSERVA AGRIDOCE"]
+  },
+  {
+    "id": 110009,
+    "category_id": 11,
+    "name": "Picles em conserva",
+    "items": ["PICLES EM CONSERVA"]
+  },
+  {
+    "id": 110010,
+    "category_id": 11,
+    "name": "Cebola em conserva vinagre branco",
+    "items": ["CEBOLA EM CONSERVA - Vinagre Branco"]
+  },
+  {
+    "id": 110011,
+    "category_id": 11,
+    "name": "Cebola em conserva vinagre tinto",
+    "items": ["CEBOLA EM CONSERVA - Vinagre Tinto"]
+  },
+  {
+    "id": 110012,
+    "category_id": 11,
+    "name": "Ovos de codorna em conserva",
+    "items": ["OVOS DE CODORNA CONSERVA"]
+  },
+  {
+    "id": 110013,
+    "category_id": 11,
+    "name": "Raiz forte em conserva",
+    "items": ["CONSERVA RAIZ FORTE"]
+  },
+  {
+    "id": 110014,
+    "category_id": 11,
+    "name": "Sardinha em óleo",
+    "items": ["SARDINHA EM OLEO COMESTIVEL"]
+  },
+  {
+    "id": 110015,
+    "category_id": 11,
+    "name": "Sardinha ao molho de tomate",
+    "items": ["SARDINHA MOLHO DE TOMATE"]
+  },
+  {
+    "id": 110016,
+    "category_id": 11,
+    "name": "Atum sólido em óleo",
+    "items": ["ATUM SOLIDO AO OLEO", "ATUM SOLIDO", "ATUM EM OLEO"]
+  },
+  {
+    "id": 110017,
+    "category_id": 11,
+    "name": "Atum sólido ao molho",
+    "items": ["ATUM SOLIDO AO MOLHO"]
+  },
+  {
+    "id": 110018,
+    "category_id": 11,
+    "name": "Atum ralado",
+    "items": ["ATUM RALADO"]
+  },
+  {
+    "id": 110019,
+    "category_id": 11,
+    "name": "Atum natural",
+    "items": ["ATUM NATURAL"]
+  },
+  {
+    "id": 110999,
+    "category_id": 11,
+    "name": "OUTROS",
+    "items": []
+  },
+
+  {
+    "id": 120001,
+    "category_id": 12,
+    "name": "Biscoito recheado",
+    "items": ["BISCOITO RECHEADO", "BISCOITO DOCE C/ RECHEIO"]
+  },
+  {
+    "id": 120002,
+    "category_id": 12,
+    "name": "Biscoito wafer",
+    "items": ["BISCOITO WAFER"]
+  },
+  {
+    "id": 120004,
+    "category_id": 12,
+    "name": "Biscoito cream cracker",
+    "items": ["BISCOITO CREAM CRACKER"]
+  },
+  {
+    "id": 120005,
+    "category_id": 12,
+    "name": "Biscoito água e sal",
+    "items": ["BISCOITO AGUA E SAL"]
+  },
+  {
+    "id": 120006,
+    "category_id": 12,
+    "name": "Biscoito salgado p/ lanche",
+    "items": ["BISCOITO SALGADO P/ LANCHE"]
+  },
+  {
+    "id": 120007,
+    "category_id": 12,
+    "name": "Biscoito maisena",
+    "items": ["BISCOITO MAISENA"]
+  },
+  {
+    "id": 120008,
+    "category_id": 12,
+    "name": "Biscoito maria",
+    "items": ["BISCOITO MARIA"]
+  },
+  {
+    "id": 120009,
+    "category_id": 12,
+    "name": "Biscoito polvilho",
+    "items": ["BISCOITO POLVILHO"]
+  },
+  {
+    "id": 120010,
+    "category_id": 12,
+    "name": "Biscoito sequilho",
+    "items": ["BISCOITO SEQUILHO"]
+  },
+  {
+    "id": 120011,
+    "category_id": 12,
+    "name": "Biscoito rosca",
+    "items": ["BISCOITO ROSCA"]
+  },
+  {
+    "id": 120012,
+    "category_id": 12,
+    "name": "Biscoito amanteigado",
+    "items": ["BISCOITO AMANTEIGADO"]
+  },
+  {
+    "id": 120013,
+    "category_id": 12,
+    "name": "Biscoito com chocolate",
+    "items": ["BISCOITO C/ CHOCOLATE"]
+  },
+  {
+    "id": 120014,
+    "category_id": 12,
+    "name": "Cookies tradicionais",
+    "items": ["COOKIES TRADICIONAL", "COOKIE"]
+  },
+  {
+    "id": 120015,
+    "category_id": 12,
+    "name": "Cookies de chocolate",
+    "items": ["COOKIES CHOCOLATE"]
+  },
+  {
+    "id": 120016,
+    "category_id": 12,
+    "name": "Torrada tradicional",
+    "items": ["TORRADA", "TORRADA TRADICIONAL"]
+  },
+  {
+    "id": 120017,
+    "category_id": 12,
+    "name": "Biscoito pão de mel",
+    "items": ["BISCOITO PAO DE MEL"]
+  },
+  {
+    "id": 120018,
+    "category_id": 12,
+    "name": "Biscoito sortido",
+    "items": ["BISCOITO SORTIDO"]
+  },
+  {
+    "id": 120999,
+    "category_id": 12,
+    "name": "OUTROS",
+    "items": []
+  },
+
+  {
+    "id": 130001,
+    "category_id": 13,
+    "name": "Água mineral",
+    "items": ["AGUA MINERAL"]
+  },
+  {
+    "id": 130002,
+    "category_id": 13,
+    "name": "Pó para refresco",
+    "items": ["PO P/ REFRESCO/BEBIDA", "PÓ P/ REFRESCO", "PO P/ BEBIDA"]
+  },
+  {
+    "id": 130003,
+    "category_id": 13,
+    "name": "Pó para refresco zero açúcar",
+    "items": ["PO PARA REFRESCO ZERO"]
+  },
+  {
+    "id": 130004,
+    "category_id": 13,
+    "name": "Suco integral de uva",
+    "items": ["SUCO INTEGRAL UVA EMBALAGEM DE VIDRO", "SUCO INTEGRAL UVA"]
+  },
+  {
+    "id": 130005,
+    "category_id": 13,
+    "name": "Suco integral de laranja",
+    "items": ["SUCO INTEGRAL DE LARANJA"]
+  },
+  {
+    "id": 130006,
+    "category_id": 13,
+    "name": "Suco misto e néctar",
+    "items": ["SUCO NECTAR", "SUCO MISTO UVA E MACA"]
+  },
+  {
+    "id": 130007,
+    "category_id": 13,
+    "name": "Suco com soja",
+    "items": ["SUCO COM SOJA - ORIGINAL", "SUCO COM SOJA - SABORES"]
+  },
+  {
+    "id": 130008,
+    "category_id": 13,
+    "name": "Polpa de fruta congelada",
+    "items": ["POLPA CONGELADA", "POLPA DE FRUTA CONGELADA"]
+  },
+  {
+    "id": 130009,
+    "category_id": 13,
+    "name": "Refrigerante Coca-Cola",
+    "items": ["REFRIGERANTE COCA COLA"]
+  },
+  {
+    "id": 130010,
+    "category_id": 13,
+    "name": "Refrigerante Guaraná Antarctica",
+    "items": ["REFRIGERANTE GUARANA ANTARTICA"]
+  },
+  {
+    "id": 130011,
+    "category_id": 13,
+    "name": "Refrigerante Pepsi",
+    "items": ["REFRIGERANTE PEPSI COLA"]
+  },
+  {
+    "id": 130012,
+    "category_id": 13,
+    "name": "Refrigerante Cini",
+    "items": ["REFRIGERANTE CINI"]
+  },
+  {
+    "id": 130013,
+    "category_id": 13,
+    "name": "Refrigerantes diversos",
+    "items": ["REFRIGERANTE"]
+  },
+  {
+    "id": 130014,
+    "category_id": 13,
+    "name": "Energético",
+    "items": ["ENERGETICO"]
+  },
+  {
+    "id": 130999,
+    "category_id": 13,
+    "name": "OUTROS",
+    "items": []
+  },
+
+  {
+    "id": 140001,
+    "category_id": 14,
+    "name": "Cerveja",
+    "items": [
+      "CERVEJA SKOL",
+      "CERVEJA BRAHMA",
+      "CERVEJA ANTARTICA",
+      "CERVEJA BUDWEISER",
+      "CERVEJA BOHEMIA",
+      "CERVEJA ORIGINAL",
+      "CERVEJA KAISER"
+    ]
+  },
+  {
+    "id": 140002,
+    "category_id": 14,
+    "name": "Cerveja zero álcool",
+    "items": ["CERVEJA ZERO ALCOOL"]
+  },
+  {
+    "id": 140003,
+    "category_id": 14,
+    "name": "Vinho tinto",
+    "items": ["VINHO TINTO"]
+  },
+  {
+    "id": 140004,
+    "category_id": 14,
+    "name": "Vinho branco",
+    "items": ["VINHO BRANCO"]
+  },
+  {
+    "id": 140005,
+    "category_id": 14,
+    "name": "Espumante",
+    "items": ["ESPUMANTE"]
+  },
+  {
+    "id": 140006,
+    "category_id": 14,
+    "name": "Whiskey",
+    "items": ["WHISKEY"]
+  },
+  {
+    "id": 140007,
+    "category_id": 14,
+    "name": "Vodka",
+    "items": ["VODKA"]
+  },
+  {
+    "id": 140008,
+    "category_id": 14,
+    "name": "Cachaça",
+    "items": ["CACHAÇA"]
+  },
+  {
+    "id": 140009,
+    "category_id": 14,
+    "name": "Licor",
+    "items": ["LICOR"]
+  },
+  {
+    "id": 140010,
+    "category_id": 14,
+    "name": "Conhaque",
+    "items": ["CONHAQUE"]
+  },
+  {
+    "id": 140011,
+    "category_id": 14,
+    "name": "Rum",
+    "items": ["RUM"]
+  },
+  {
+    "id": 140999,
+    "category_id": 14,
+    "name": "OUTROS",
+    "items": []
+  },
+
+  {
+    "id": 150001,
+    "category_id": 15,
+    "name": "Detergente líquido",
+    "items": ["DETERGENTE LIQUIDO", "DETERGENTE"]
+  },
+  {
+    "id": 150002,
+    "category_id": 15,
+    "name": "Amaciante regular",
+    "items": ["AMACIANTE", "AMACIANTE DE ROUPAS"]
+  },
+  {
+    "id": 150003,
+    "category_id": 15,
+    "name": "Amaciante concentrado",
+    "items": ["AMACIANTE DE ROUPAS CONCENTRADO"]
+  },
+  {
+    "id": 150004,
+    "category_id": 15,
+    "name": "Sabão em pó - Caixa",
+    "items": ["SABAO EM PO", "SABAO EM PO - CAIXA"]
+  },
+  {
+    "id": 150005,
+    "category_id": 15,
+    "name": "Sabão em pó - Sachê",
+    "items": ["SABAO EM PO - SACHE"]
+  },
+  {
+    "id": 150006,
+    "category_id": 15,
+    "name": "Sabão líquido lava roupas",
+    "items": ["SABAO LIQ. LAVA ROUPAS", "SABAO LIQUIDO LAVA ROUPAS"]
+  },
+  {
+    "id": 150007,
+    "category_id": 15,
+    "name": "Sabão em barra",
+    "items": ["SABAO EM BARRA", "SABÃO EM BARRA MULTIUSO"]
+  },
+  {
+    "id": 150008,
+    "category_id": 15,
+    "name": "Sabão de coco",
+    "items": ["SABAO DE COCO"]
+  },
+  {
+    "id": 150009,
+    "category_id": 15,
+    "name": "Água sanitária",
+    "items": ["AGUA SANITARIA"]
+  },
+  {
+    "id": 150010,
+    "category_id": 15,
+    "name": "Desinfetante",
+    "items": ["DESINFETANTE LIQUIDO"]
+  },
+  {
+    "id": 150011,
+    "category_id": 15,
+    "name": "Limpador multiuso",
+    "items": ["MULTIUSO", "MULTIUSO CLORO ATIVO"]
+  },
+  {
+    "id": 150012,
+    "category_id": 15,
+    "name": "Limpador perfumado e desengordurante",
+    "items": ["LIMPADOR", "LIMPADOR PERFUMADO SEM ALCOOL", "LIMPADOR DESENGORDURANTE - COZINHA"]
+  },
+  {
+    "id": 150013,
+    "category_id": 15,
+    "name": "Limpa vidros",
+    "items": ["LIMPA VIDROS", "LIMPA VIDROS COM ALCOOL"]
+  },
+  {
+    "id": 150014,
+    "category_id": 15,
+    "name": "Saponáceo cremoso",
+    "items": ["SAPONACEO CREMOSO"]
+  },
+  {
+    "id": 150015,
+    "category_id": 15,
+    "name": "Saponáceo em pó",
+    "items": ["SAPONACEO EM PO"]
+  },
+  {
+    "id": 150016,
+    "category_id": 15,
+    "name": "Cera líquida",
+    "items": ["CERA LIQUIDA"]
+  },
+  {
+    "id": 150017,
+    "category_id": 15,
+    "name": "Vinagre de álcool",
+    "items": ["VINAGRE DE ALCOOL"]
+  },
+  {
+    "id": 150018,
+    "category_id": 15,
+    "name": "Vinagre de maçã",
+    "items": ["VINAGRE DE MACA"]
+  },
+  {
+    "id": 150019,
+    "category_id": 15,
+    "name": "Papel toalha",
+    "items": ["PAPEL TOALHA", "TOALHA DE PAPEL - FOLHA DUPLA", "TOALHA DE PAPEL"]
+  },
+  {
+    "id": 150020,
+    "category_id": 15,
+    "name": "Esponja dupla face",
+    "items": ["ESPONJA DUPLA FACE"]
+  },
+  {
+    "id": 150021,
+    "category_id": 15,
+    "name": "Lã de aço",
+    "items": ["BOMBRIL", "ESPONJA DE LÃ DE AÇO", "PALHA DE ACO"]
+  },
+  {
+    "id": 150022,
+    "category_id": 15,
+    "name": "Saco alvejado e saco cru",
+    "items": ["SACO CRU / SACO ALVEJADO", "SACO ALVEJADO", "SACO CRU 88 X 58 CM"]
+  },
+  {
+    "id": 150023,
+    "category_id": 15,
+    "name": "Saco de lixo 30L",
+    "items": ["SACO PLASTICO P/ LIXO - 30 L"]
+  },
+  {
+    "id": 150024,
+    "category_id": 15,
+    "name": "Saco de lixo 50L",
+    "items": ["SACO PLASTICO P/ LIXO - 50 L"]
+  },
+  {
+    "id": 150025,
+    "category_id": 15,
+    "name": "Saco de lixo 100L",
+    "items": ["SACO PLASTICO P/ LIXO - 100 L"]
+  },
+  {
+    "id": 150026,
+    "category_id": 15,
+    "name": "Vassoura",
+    "items": ["VASSOURA", "VASSOURA USO EXTERNO"]
+  },
+  {
+    "id": 150027,
+    "category_id": 15,
+    "name": "Rodo",
+    "items": ["RODO", "RODO COM BORRACHA DUPLA", "RODO DUPLO PLASTICO"]
+  },
+  {
+    "id": 150028,
+    "category_id": 15,
+    "name": "Esfregão",
+    "items": ["ESFREGAO", "ESFREGAO PARA PISO"]
+  },
+  {
+    "id": 150029,
+    "category_id": 15,
+    "name": "Escovas de limpeza",
+    "items": ["ESCOVA P/ LIMPEZA EM NYLON", "ESCOVA DE MAO"]
+  },
+  {
+    "id": 150999,
+    "category_id": 15,
+    "name": "OUTROS",
+    "items": []
+  },
+
+  {
+    "id": 160001,
+    "category_id": 16,
+    "name": "Sabonete em barra",
+    "items": ["SABONETE", "SABONETE CLASSICO", "SABONETE SUAVE", "SABONETE / SABONETE SUAVE", "SABONETE EM BARRA VEGETAL"]
+  },
+  {
+    "id": 160002,
+    "category_id": 16,
+    "name": "Sabonete hidratante e vegetal",
+    "items": ["SABONETE HIDRATANTE", "SABONETE VEGETAL"]
+  },
+  {
+    "id": 160003,
+    "category_id": 16,
+    "name": "Sabonete antibacteriano",
+    "items": ["SABONETE ANTIBACTERIANO"]
+  },
+  {
+    "id": 160004,
+    "category_id": 16,
+    "name": "Creme dental com flúor",
+    "items": ["CREME DENTAL", "CREME DENTAL COM FLUOR"]
+  },
+  {
+    "id": 160005,
+    "category_id": 16,
+    "name": "Creme dental sem flúor",
+    "items": ["CREME DENTAL SEM FLUOR"]
+  },
+  {
+    "id": 160006,
+    "category_id": 16,
+    "name": "Escova dental adulto",
+    "items": ["ESCOVA DENTAL ADULTO", "ESCOVA DENTAL"]
+  },
+  {
+    "id": 160007,
+    "category_id": 16,
+    "name": "Escova dental infantil",
+    "items": ["ESCOVA DENTAL INFANTIL"]
+  },
+  {
+    "id": 160008,
+    "category_id": 16,
+    "name": "Fio e fita dental",
+    "items": ["FITA DENTAL"]
+  },
+  {
+    "id": 160009,
+    "category_id": 16,
+    "name": "Desodorante aerosol",
+    "items": ["DESODORANTE AEROSOL"]
+  },
+  {
+    "id": 160010,
+    "category_id": 16,
+    "name": "Desodorante roll-on",
+    "items": ["DESODORANTE ROLLON"]
+  },
+  {
+    "id": 160011,
+    "category_id": 16,
+    "name": "Shampoo",
+    "items": ["SHAMPOO"]
+  },
+  {
+    "id": 160012,
+    "category_id": 16,
+    "name": "Condicionador",
+    "items": ["CONDICIONADOR P/ CABELO", "CONDICIONADOR"]
+  },
+  {
+    "id": 160013,
+    "category_id": 16,
+    "name": "Creme de hidratação",
+    "items": ["CREME DE HIDRATACAO"]
+  },
+  {
+    "id": 160014,
+    "category_id": 16,
+    "name": "Papel higiênico folha simples",
+    "items": ["PAPEL HIGIENICO (Várias apresentações)", "PAPEL HIGIENICO C/ 8 UNIDADES 60 M"]
+  },
+  {
+    "id": 160015,
+    "category_id": 16,
+    "name": "Papel higiênico folha dupla",
+    "items": ["PAPEL HIGIENICO FOLHA DUPLA C/ 04 UNIDADES 30 M", "PAPEL HIGIENICO FOLHA DUPLA"]
+  },
+  {
+    "id": 160016,
+    "category_id": 16,
+    "name": "Absorvente",
+    "items": ["ABSORVENTE COM ABAS", "ABSORVENTE COM ABAS C/8 UNIDADES"]
+  },
+  {
+    "id": 160017,
+    "category_id": 16,
+    "name": "Aparelho de barbear",
+    "items": ["APARELHO DE BARBEAR 2 LAMINAS"]
+  },
+  {
+    "id": 160018,
+    "category_id": 16,
+    "name": "Repelente",
+    "items": ["LOCAO REPELENTE DE INSETOS"]
+  },
+  {
+    "id": 160018,
+    "category_id": 16,
+    "name": "SABONETE LIQUIDO",
+    "items": ["SABONETE LIQUIDO"]
+  },
+  {
+    "id": 16999,
+    "category_id": 16,
+    "name": "OUTROS",
+    "items": []
+  },
+
+  {
+    "id": 170001,
+    "category_id": 17,
+    "name": "Fralda infantil P - 36 unidades",
+    "items": ["FRALDA INFANTIL P - 36 UNIDADES"]
+  },
+  {
+    "id": 170002,
+    "category_id": 17,
+    "name": "Fralda infantil M - 18 unidades",
+    "items": ["FRALDA INFANTIL - M 18 UNIDADES"]
+  },
+  {
+    "id": 170003,
+    "category_id": 17,
+    "name": "Fralda infantil M - 32 unidades",
+    "items": ["FRALDA INFANTIL M - 32 UNIDADES"]
+  },
+  {
+    "id": 170004,
+    "category_id": 17,
+    "name": "Fralda infantil G - 28 unidades",
+    "items": ["FRALDA INFANTIL G - 28 UNIDADES"]
+  },
+  {
+    "id": 170005,
+    "category_id": 17,
+    "name": "Fralda infantil XG - 14 unidades",
+    "items": ["FRALDA INFANTIL - XG 14 UNIDADES"]
+  },
+  {
+    "id": 170006,
+    "category_id": 17,
+    "name": "Fralda infantil XG - 22 unidades",
+    "items": ["FRALDA INFANTIL XG - 22 UNIDADES"]
+  },
+  {
+    "id": 170007,
+    "category_id": 17,
+    "name": "Fralda infantil XXG - 12 unidades",
+    "items": ["FRALDA INFANTIL - XXG 12 UNIDADES"]
+  },
+  {
+    "id": 170008,
+    "category_id": 17,
+    "name": "Fralda infantil XXG - 20 unidades",
+    "items": ["FRALDA INFANTIL XXG - 20 UNIDADES"]
+  },
+  {
+    "id": 170009,
+    "category_id": 17,
+    "name": "Fralda geriátrica M - 09 unidades",
+    "items": ["FRALDA GERIATRICA - M 09 UNIDADES"]
+  },
+  {
+    "id": 170010,
+    "category_id": 17,
+    "name": "Fralda geriátrica G - 08 unidades",
+    "items": ["FRALDA GERIATRICA G - 08 UNIDADES"]
+  },
+  {
+    "id": 170011,
+    "category_id": 17,
+    "name": "Fralda geriátrica (diversos)",
+    "items": ["FRALDA GERIATRICA (M, G)"]
+  },
+  {
+    "id": 170999,
+    "category_id": 17,
+    "name": "OUTROS",
+    "items": []
+  },
+
+    {
+      "id": 180999,
+      "category_id": 18,
+      "name": "Utilidades e iluminação",
+      "items": [
+        "LAMPADA LED 07 WATTS",
+        "LAMPADA LED 09 WATTS",
+        "LAMPADA LED 12 WATTS",
+        "VELA C/ 8 UNIDADES"
+      ]
+    },
+    {
+      "id": 18002,
+      "category_id": 18,
+      "name": "Cozinha e descartáveis",
+      "items": [
+        "FILTRO P/CAFE N103 - 30 UNIDADES",
+        "FILTRO P/CAFE N103 POLIPROPILENO - 30 UNIDADES",
+        "FILME PLASTICO"
+      ]
+    },
+    {
+      "id": 180999,
+      "category_id": 18,
+      "name": "Outros outros",
+      "items": ["SOPA DESIDRATADA", "AMENDOIM CLARO", "CANUDINHOS SALGADOS"]
+    }
+  ]
+}

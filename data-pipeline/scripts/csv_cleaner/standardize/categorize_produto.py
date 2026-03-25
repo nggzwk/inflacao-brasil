@@ -81,6 +81,35 @@ def _build_item_index(categories: list[Category]) -> dict[str, tuple[Category, s
     return index
 
 
+def _load_subcategory_indexes(
+    path: Path,
+) -> tuple[dict[int, dict[str, tuple[Category, str]]], dict[int, int]]:
+    if not path.exists():
+        return {}, {}
+
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    by_category: dict[int, list[Category]] = {}
+    fallback_by_category: dict[int, int] = {}
+
+    for row in payload.get("subcategories", []):
+        subcategory = Category(
+            id=int(row["id"]),
+            name=str(row["name"]),
+            items=[str(item) for item in row.get("items", [])],
+        )
+        category_id = int(row["category_id"])
+        by_category.setdefault(category_id, []).append(subcategory)
+
+        if not subcategory.items or _normalize(subcategory.name).startswith("OUTROS"):
+            fallback_by_category[category_id] = subcategory.id
+
+    indexes: dict[int, dict[str, tuple[Category, str]]] = {}
+    for category_id, subcategories in by_category.items():
+        indexes[category_id] = _build_item_index(subcategories)
+
+    return indexes, fallback_by_category
+
+
 def _best_rule_match(produto: str, item_index: dict[str, tuple[Category, str]]) -> tuple[Category | None, str, float]:
     normalized = _normalize(produto)
     if not normalized:
@@ -129,6 +158,7 @@ def categorize_file(
     input_path: Path,
     output_path: Path,
     rules_path: Path,
+    subcategories_rules_path: Path,
     produto_column: str,
 ) -> None:
     input_path_text = str(input_path).replace("\\", "/").lower()
@@ -136,6 +166,7 @@ def categorize_file(
 
     categories = _load_categories(rules_path)
     item_index = _build_item_index(categories)
+    subcategory_indexes, fallback_subcategory_by_category = _load_subcategory_indexes(subcategories_rules_path)
 
     sep = _detect_csv_separator(input_path)
     df = pd.read_csv(input_path, sep=sep, dtype=str).fillna("")
@@ -163,21 +194,40 @@ def categorize_file(
 
         mapping[produto] = (None, method, score)
 
-    df["categoria_score"] = df[produto_column].map(lambda p: mapping.get(str(p).strip(), (None, "", 0.0))[2])
-    df["produto_categoria_novo"] = df[produto_column].map(lambda p: mapping.get(str(p).strip(), (None, "", 0.0))[0])
-    df["produto_categoria_novo"] = pd.to_numeric(df["produto_categoria_novo"], errors="coerce").astype("Int64")
+    subcategory_mapping: dict[str, int | None] = {}
+    for produto in unique_produtos:
+        category_id = mapping.get(produto, (None, "", 0.0))[0]
+        if category_id is None:
+            subcategory_mapping[produto] = None
+            continue
 
-    if "produto_categoria" in df.columns:
-        old_col_idx = df.columns.get_loc("produto_categoria")
-        df = df.drop(columns=["produto_categoria"])
-        moved_col = df.pop("produto_categoria_novo")
-        df.insert(old_col_idx, "produto_categoria_novo", moved_col)
+        index_for_category = subcategory_indexes.get(int(category_id), {})
+        fallback_subcategory = fallback_subcategory_by_category.get(int(category_id))
+        if not index_for_category:
+            subcategory_mapping[produto] = fallback_subcategory
+            continue
+
+        matched_subcategory, _, _ = _best_rule_match(produto, index_for_category)
+        if matched_subcategory is not None:
+            subcategory_mapping[produto] = matched_subcategory.id
+        else:
+            subcategory_mapping[produto] = fallback_subcategory
+
+    df["categoria_score"] = df[produto_column].map(lambda p: mapping.get(str(p).strip(), (None, "", 0.0))[2])
+    df["produto_categoria"] = df[produto_column].map(lambda p: mapping.get(str(p).strip(), (None, "", 0.0))[0])
+    df["produto_categoria"] = pd.to_numeric(df["produto_categoria"], errors="coerce").astype("Int64")
+    df["produto_subcategoria"] = df[produto_column].map(lambda p: subcategory_mapping.get(str(p).strip()))
+    df["produto_subcategoria"] = pd.to_numeric(df["produto_subcategoria"], errors="coerce").astype("Int64")
+
+    legacy_columns = [col for col in ["codigo_categoria", "id_produto"] if col in df.columns]
+    if legacy_columns:
+        df = df.drop(columns=legacy_columns)
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
     df.to_csv(output_path, index=False, sep=sep)
 
     total = len(df)
-    matched = int(df["produto_categoria_novo"].notna().sum())
+    matched = int(df["produto_categoria"].notna().sum())
     print(f"Rows: {total}")
     print(f"Categorized: {matched}")
     print(f"Uncategorized: {total - matched}")
@@ -228,6 +278,12 @@ def build_parser() -> argparse.ArgumentParser:
         type=Path,
         help="Rules JSON path",
     )
+    parser.add_argument(
+        "--subcategories-rules",
+        default=Path(__file__).with_name("rules_subcategories_v1.json"),
+        type=Path,
+        help="Subcategories rules JSON path",
+    )
     parser.add_argument("--produto-column", default="produto", help="Produto column name")
     return parser
 
@@ -241,6 +297,7 @@ def main() -> int:
             input_path=input_path,
             output_path=output_path,
             rules_path=args.rules,
+            subcategories_rules_path=args.subcategories_rules,
             produto_column=args.produto_column,
         )
         print(f"Saved: {output_path}")
