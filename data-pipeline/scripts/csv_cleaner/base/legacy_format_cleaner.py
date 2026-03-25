@@ -95,10 +95,22 @@ def _select_output_rows(frame: pd.DataFrame) -> pd.DataFrame:
     frame = frame.sort_values(by=TEMP_PRECO_COLUMN, ascending=True, kind="stable")
     frame[TEMP_GROUP_SIZE_COLUMN] = frame.groupby(DEDUP_COLUMNS)["produto"].transform("size")
     frame[TEMP_GROUP_RANK_COLUMN] = frame.groupby(DEDUP_COLUMNS).cumcount()
-    return frame[
-        ((frame[TEMP_GROUP_SIZE_COLUMN] > 1) & (frame[TEMP_GROUP_RANK_COLUMN] == 1))
-        | ((frame[TEMP_GROUP_SIZE_COLUMN] == 1) & (frame[TEMP_GROUP_RANK_COLUMN] == 0))
-    ]
+
+    selected_indices: list[int] = []
+    for _, group in frame.groupby(DEDUP_COLUMNS, sort=False):
+        if len(group) == 1:
+            selected_indices.append(group.index[0])
+            continue
+
+        candidates = group.iloc[1:]
+        non_zero_candidates = candidates[candidates[TEMP_PRECO_COLUMN] > 0]
+
+        if not non_zero_candidates.empty:
+            selected_indices.append(non_zero_candidates.index[0])
+        else:
+            selected_indices.append(candidates.index[0])
+
+    return frame.loc[selected_indices].copy()
 
 
 def clean_old_format_csv(input_file: Path, output_file: Path, target_date: str) -> bool:
