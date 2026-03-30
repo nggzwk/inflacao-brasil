@@ -1,0 +1,76 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Carnes"
+    },
+    {
+      "id": 2,
+      "name": "Ovos"
+    },
+    {
+      "id": 3,
+      "name": "Leites"
+    },
+    {
+      "id": 4,
+      "name": "Grãos e farináceos"
+    },
+    {
+      "id": 5,
+      "name": "Hortifruti"
+    },
+    {
+      "id": 6,
+      "name": "Óleos e azeites"
+    },
+    {
+      "id": 7,
+      "name": "Laticinios, frios e embutidos"
+    },
+    {
+      "id": 8,
+      "name": "Sal, Acucar e Temperos"
+    },
+    {
+      "id": 9,
+      "name": "Cafes, Achocolatados e Matinais"
+    },
+    {
+      "id": 10,
+      "name": "Confeitaria e doces"
+    },
+    {
+      "id": 11,
+      "name": "Enlatados e conservas"
+    },
+    {
+      "id": 12,
+      "name": "Biscoitos"
+    },
+    {
+      "id": 13,
+      "name": "Bebidas"
+    },
+    {
+      "id": 14,
+      "name": "Bebidas alcoolicas"
+    },
+    {
+      "id": 15,
+      "name": "Produtos de limpeza"
+    },
+    {
+      "id": 16,
+      "name": "Higiene pessoal"
+    },
+    {
+      "id": 17,
+      "name": "Fraldas"
+    },
+    {
+      "id": 18,
+      "name": "Sem categoria"
+    }
+  ]
+}

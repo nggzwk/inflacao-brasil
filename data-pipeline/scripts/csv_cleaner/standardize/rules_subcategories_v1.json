@@ -307,7 +307,7 @@
       "id": 30001,
       "category_id": 3,
       "name": "Leite longa vida integral",
-      "items": ["LEITE LONGA VIDA INTEGRAL", "LEITE INTEGRAL"]
+      "items": ["LEITE LONGA VIDA INTEGRAL", "LEITE INTEGRAL", "LEITE PASTEURIZADO TIPO A"]
     },
     {
       "id": 30002,
@@ -585,12 +585,6 @@
     {
       "id": 40036,
       "category_id": 4,
-      "name": "Pães fatiados",
-      "items": ["PAO FATIADO BROA DE GRAOS", "PAO FATIADO PARA LANCHE"]
-    },
-    {
-      "id": 40036,
-      "category_id": 4,
       "name": "Pipoca para microondas",
       "items": ["PIPOCA PARA MICROONDAS"]
     },
@@ -826,7 +820,7 @@
       "id": 50037,
       "category_id": 5,
       "name": "Cogumelos",
-      "items": ["COGUMELO", "CHAMPIGNON", "COGUMELO PARIS"]
+      "items": ["COGUMELO", "CHAMPIGNON", "COGUMELO PARIS", "CHAMPIGNON INTEIRO"]
     },
     {
       "id": 50038,
@@ -1134,7 +1128,7 @@
       "id": 60007,
       "category_id": 6,
       "name": "Mostarda",
-      "items": ["MOSTARDA SACHE", "MOSTARDA"]
+      "items": ["MOSTARDA SACHE", "MOSTARDA", "MOSTARDA BISNAGA"]
     },
     {
       "id": 60008,
@@ -1364,6 +1358,12 @@
     "category_id": 7,
     "name": "Bacon",
     "items": ["BACON SUINO"]
+  },
+  {
+    "id": 70013,
+    "category_id": 7,
+    "name": "Manteiga sem sal zero lactose",
+    "items": ["MANTEIGA EXTRA SEM SAL ZERO LACTOSE", "MANTEIGA PRIMEIRA QUALIDADE S/ SAL 0% LACTOSE"]
   },
   {
     "id": 70999,

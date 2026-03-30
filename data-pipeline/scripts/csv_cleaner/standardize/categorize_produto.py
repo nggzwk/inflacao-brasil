@@ -105,7 +105,14 @@ def _load_subcategory_indexes(
 
     indexes: dict[int, dict[str, tuple[Category, str]]] = {}
     for category_id, subcategories in by_category.items():
-        indexes[category_id] = _build_item_index(subcategories)
+        index = _build_item_index(subcategories)
+
+        for subcategory in subcategories:
+            name_key = _normalize(subcategory.name)
+            if name_key and name_key not in index:
+                index[name_key] = (subcategory, subcategory.name)
+
+        indexes[category_id] = index
 
     return indexes, fallback_by_category
 
@@ -154,6 +161,39 @@ def _best_rule_match(produto: str, item_index: dict[str, tuple[Category, str]]) 
     return None, "unmatched", 0.0
 
 
+def _best_subcategory_based_category(
+    produto: str,
+    subcategory_indexes: dict[int, dict[str, tuple[Category, str]]],
+) -> tuple[int | None, str, float]:
+    # Fallback path: infer top-level category directly from subcategory rules.
+    # This avoids needing duplicated item lists in rules_v1.json.
+    method_rank = {"rule_exact": 3, "rule_fuzzy": 2, "rule_keyword": 1}
+    best_category_id: int | None = None
+    best_method = "unmatched"
+    best_score = 0.0
+    best_rank = 0
+
+    for category_id, sub_index in subcategory_indexes.items():
+        if not sub_index:
+            continue
+
+        matched_subcategory, method, score = _best_rule_match(produto, sub_index)
+        if matched_subcategory is None:
+            continue
+
+        rank = method_rank.get(method, 0)
+        if rank > best_rank or (rank == best_rank and score > best_score):
+            best_rank = rank
+            best_score = score
+            best_method = f"subcategory_{method}"
+            best_category_id = category_id
+
+    if best_category_id is None:
+        return None, "unmatched", 0.0
+
+    return best_category_id, best_method, best_score
+
+
 def categorize_file(
     input_path: Path,
     output_path: Path,
@@ -192,7 +232,14 @@ def categorize_file(
             mapping[produto] = (category.id, method, score)
             continue
 
-        mapping[produto] = (None, method, score)
+        inferred_category_id, inferred_method, inferred_score = _best_subcategory_based_category(
+            produto,
+            subcategory_indexes,
+        )
+        if inferred_category_id is not None:
+            mapping[produto] = (inferred_category_id, inferred_method, inferred_score)
+        else:
+            mapping[produto] = (None, method, score)
 
     subcategory_mapping: dict[str, int | None] = {}
     for produto in unique_produtos:

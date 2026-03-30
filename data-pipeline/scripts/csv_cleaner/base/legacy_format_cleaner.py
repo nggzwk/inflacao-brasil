@@ -16,6 +16,7 @@ from csv_utils import resolve_target_date
 REQUIRED_COLUMNS = [
     "data_pesquisa",
     "rede",
+    "endereco",
     "codigo_categoria",
     "id_produto",
     "produto",
@@ -33,6 +34,7 @@ TEMP_CODIGO_CATEGORIA_COLUMN = "__codigo_categoria_num__"
 COLUMN_ALIASES = {
     "data_pesquisa": ["data_pesquisa"],
     "rede": ["rede"],
+    "endereco": ["endereco_rua", "endereco_numero", "bairro", "cidade", "estado"],
     "codigo_categoria": ["id_produto_classificacao"],
     "id_produto": ["id_produto"],
     "produto": ["produto"],
@@ -60,7 +62,9 @@ def _normalize_produto(value: str) -> str:
     if pd.isna(value):
         return ""
     text = str(value)
-    text = re.sub(r"\(\s*\+\s*\)\s*BARATO|\(\s*\+\s*BARATO\s*\)", "", text, flags=re.IGNORECASE)
+    text = re.sub(
+        r"\(\s*\+\s*\)\s*BARATO|\(\s*\+\s*BARATO\s*\)", "", text, flags=re.IGNORECASE
+    )
     text = re.sub(r"\bLATA\b", "", text, flags=re.IGNORECASE)
     text = re.sub(r"\s+", " ", text)
     return text.strip()
@@ -91,9 +95,38 @@ def _normalize_qtd_embalagem(value: str) -> str:
         return text
 
 
+def _normalize_endereco_numero(value: str) -> str:
+    if pd.isna(value):
+        return ""
+    text = str(value).strip().replace(",", ".")
+    if text == "":
+        return ""
+    try:
+        number = float(text)
+        if number.is_integer():
+            return str(int(number))
+        return f"{number:g}"
+    except ValueError:
+        return text
+
+
+def _build_endereco(frame: pd.DataFrame) -> pd.Series:
+    address_columns = ["endereco_rua", "endereco_numero", "bairro", "cidade", "estado"]
+    parts = pd.DataFrame(index=frame.index)
+    for col in address_columns:
+        if col in frame.columns:
+            parts[col] = frame[col].fillna("").astype(str).str.strip()
+        else:
+            parts[col] = ""
+    parts["endereco_numero"] = parts["endereco_numero"].apply(_normalize_endereco_numero)
+    return parts.apply(lambda row: " - ".join(part for part in row if part), axis=1)
+
+
 def _select_output_rows(frame: pd.DataFrame) -> pd.DataFrame:
     frame = frame.sort_values(by=TEMP_PRECO_COLUMN, ascending=True, kind="stable")
-    frame[TEMP_GROUP_SIZE_COLUMN] = frame.groupby(DEDUP_COLUMNS)["produto"].transform("size")
+    frame[TEMP_GROUP_SIZE_COLUMN] = frame.groupby(DEDUP_COLUMNS)["produto"].transform(
+        "size"
+    )
     frame[TEMP_GROUP_RANK_COLUMN] = frame.groupby(DEDUP_COLUMNS).cumcount()
 
     selected_indices: list[int] = []
@@ -162,6 +195,9 @@ def clean_old_format_csv(input_file: Path, output_file: Path, target_date: str) 
 
     cleaned = pd.DataFrame(index=filtered.index)
     for output_column in REQUIRED_COLUMNS:
+        if output_column == "endereco":
+            cleaned[output_column] = _build_endereco(filtered)
+            continue
         cleaned[output_column] = _pick_column(filtered, COLUMN_ALIASES[output_column])
 
     cleaned = cleaned.fillna("")
@@ -180,7 +216,9 @@ def clean_old_format_csv(input_file: Path, output_file: Path, target_date: str) 
     ).dt.strftime("%Y-%m-%d")
     cleaned["data_pesquisa"] = cleaned["data_pesquisa"].fillna("")
 
-    cleaned[TEMP_CODIGO_CATEGORIA_COLUMN] = pd.to_numeric(cleaned["codigo_categoria"], errors="coerce")
+    cleaned[TEMP_CODIGO_CATEGORIA_COLUMN] = pd.to_numeric(
+        cleaned["codigo_categoria"], errors="coerce"
+    )
     cleaned = cleaned.sort_values(
         by=[TEMP_CODIGO_CATEGORIA_COLUMN, "codigo_categoria"],
         ascending=[True, True],
