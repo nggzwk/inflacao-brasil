@@ -110,6 +110,32 @@ def _normalize_endereco_numero(value: str) -> str:
         return text
 
 
+def _filter_group_outliers(group: pd.DataFrame) -> pd.DataFrame:
+    valid = group[
+        (group[TEMP_PRECO_COLUMN] > 0) & (group[TEMP_PRECO_COLUMN] < float("inf"))
+    ].copy()
+
+    if len(valid) < 4:
+        return valid
+
+    q1 = valid[TEMP_PRECO_COLUMN].quantile(0.25)
+    q3 = valid[TEMP_PRECO_COLUMN].quantile(0.75)
+    iqr = q3 - q1
+
+    if pd.isna(iqr) or iqr <= 0:
+        return valid
+
+    lower = max(0.0, q1 - 1.5 * iqr)
+    upper = q3 + 1.5 * iqr
+    filtered = valid[
+        (valid[TEMP_PRECO_COLUMN] >= lower) & (valid[TEMP_PRECO_COLUMN] <= upper)
+    ]
+
+    if filtered.empty:
+        return valid
+    return filtered
+
+
 def _build_endereco(frame: pd.DataFrame) -> pd.Series:
     address_columns = ["endereco_rua", "endereco_numero", "bairro", "cidade", "estado"]
     parts = pd.DataFrame(index=frame.index)
@@ -123,7 +149,7 @@ def _build_endereco(frame: pd.DataFrame) -> pd.Series:
 
 
 def _select_output_rows(frame: pd.DataFrame) -> pd.DataFrame:
-    frame = frame.sort_values(by=TEMP_PRECO_COLUMN, ascending=True, kind="stable")
+    frame = frame.copy()
     frame[TEMP_GROUP_SIZE_COLUMN] = frame.groupby(DEDUP_COLUMNS)["produto"].transform(
         "size"
     )
@@ -135,13 +161,21 @@ def _select_output_rows(frame: pd.DataFrame) -> pd.DataFrame:
             selected_indices.append(group.index[0])
             continue
 
-        candidates = group.iloc[1:]
-        non_zero_candidates = candidates[candidates[TEMP_PRECO_COLUMN] > 0]
+        candidates = _filter_group_outliers(group)
+        if candidates.empty:
+            selected_indices.append(group.index[0])
+            continue
 
-        if not non_zero_candidates.empty:
-            selected_indices.append(non_zero_candidates.index[0])
-        else:
-            selected_indices.append(candidates.index[0])
+        median_price = candidates[TEMP_PRECO_COLUMN].median()
+        scored_candidates = candidates.assign(
+            __dist_to_median__=(candidates[TEMP_PRECO_COLUMN] - median_price).abs()
+        )
+        chosen_index = scored_candidates.sort_values(
+            by=["__dist_to_median__", TEMP_PRECO_COLUMN],
+            ascending=[True, True],
+            kind="stable",
+        ).index[0]
+        selected_indices.append(chosen_index)
 
     return frame.loc[selected_indices].copy()
 

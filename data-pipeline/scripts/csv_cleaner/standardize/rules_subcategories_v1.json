@@ -1371,18 +1371,11 @@
     "name": "OUTROS",
     "items": []
   },
-
-  {
-    "id": 80001,
-    "category_id": 8,
-    "name": "Açúcar refinado",
-    "items": ["AÇÚCAR REFINADO"]
-  },
   {
     "id": 80002,
     "category_id": 8,
     "name": "Açúcar cristal",
-    "items": ["AÇÚCAR CRISTAL"]
+    "items": ["AÇÚCAR CRISTAL", "AÇÚCAR REFINADO"]
   },
   {
     "id": 80003,
