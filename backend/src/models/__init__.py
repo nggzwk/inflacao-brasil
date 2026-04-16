@@ -1,4 +1,4 @@
-from .mvp import Basket, BasketItem, ItemKey, ItemMonthlyPrice, PriceObservation
+from .inflacao_brasil import Basket, BasketItem, ItemKey, ItemMonthlyPrice, PriceObservation
 
 __all__ = [
     "Basket",
