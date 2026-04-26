@@ -307,7 +307,7 @@
       "id": 30001,
       "category_id": 3,
       "name": "Leite longa vida integral",
-      "items": ["LEITE LONGA VIDA INTEGRAL", "LEITE INTEGRAL", "LEITE PASTEURIZADO TIPO A"]
+      "items": ["LEITE LONGA VIDA INTEGRAL", "LEITE INTEGRAL", "LEITE PASTEURIZADO TIPO A", "LEITE PASTEURIZADO INTEGRAL"]
     },
     {
       "id": 30002,
@@ -1882,25 +1882,13 @@
     "id": 110008,
     "category_id": 11,
     "name": "Pepino em conserva",
-    "items": ["PEPINO EM CONSERVA INTEIRO", "PEPINO EM CONSERVA AGRIDOCE"]
-  },
-  {
-    "id": 110009,
-    "category_id": 11,
-    "name": "Picles em conserva",
-    "items": ["PICLES EM CONSERVA"]
-  },
-  {
-    "id": 110010,
-    "category_id": 11,
-    "name": "Cebola em conserva vinagre branco",
-    "items": ["CEBOLA EM CONSERVA - Vinagre Branco"]
+    "items": ["PEPINO EM CONSERVA INTEIRO", "PEPINO EM CONSERVA AGRIDOCE", "PICLES EM CONSERVA"]
   },
   {
     "id": 110011,
     "category_id": 11,
     "name": "Cebola em conserva vinagre tinto",
-    "items": ["CEBOLA EM CONSERVA - Vinagre Tinto"]
+    "items": ["CEBOLA EM CONSERVA - Vinagre Tinto", "CEBOLA EM CONSERVA - Vinagre Branco"]
   },
   {
     "id": 110012,

@@ -22,14 +22,6 @@ SCRIPT_DIR = Path(__file__).parent
 DATA_DIR = SCRIPT_DIR.parent / "data"
 RAW_DIR = DATA_DIR / "raw"
 CLEANED_DIR = DATA_DIR / "cleaned"
-STANDARDIZED_DIR = DATA_DIR / "standardized"
-
-
-def parse_date_br(date_str: str) -> Optional[datetime]:
-    try:
-        return datetime.strptime(date_str, "%d/%m/%Y")
-    except (ValueError, TypeError):
-        return None
 
 
 def parse_date_iso(date_str: str) -> Optional[datetime]:
@@ -251,6 +243,18 @@ DATASETS: Dict[str, DatasetConfig] = {
 }
 
 
+def _get_dataset_config(dataset_key: str) -> DatasetConfig:
+    config = DATASETS.get(dataset_key)
+    if config is None:
+        valid = ", ".join(sorted(DATASETS.keys()))
+        raise ValueError(f"invalid dataset '{dataset_key}'. expected one of: {valid}")
+    return config
+
+
+def _run_for_all(operation: Callable[[str], bool]) -> dict[str, bool]:
+    return {key: operation(key) for key in DATASETS.keys()}
+
+
 def get_paths(config: DatasetConfig) -> tuple[Path, Path]:
     input_dir = RAW_DIR / config.raw_subdir
     output_dir = CLEANED_DIR / config.cleaned_subdir
@@ -258,7 +262,7 @@ def get_paths(config: DatasetConfig) -> tuple[Path, Path]:
 
 
 def process_dataset(dataset_key: str) -> bool:
-    config = DATASETS[dataset_key]
+    config = _get_dataset_config(dataset_key)
     input_dir, output_dir = get_paths(config)
 
     print_section(f"Processing {config.title}")
@@ -290,11 +294,11 @@ def process_dataset(dataset_key: str) -> bool:
 
 
 def process_all() -> dict[str, bool]:
-    return {key: process_dataset(key) for key in DATASETS.keys()}
+    return _run_for_all(process_dataset)
 
 
 def download_dataset(dataset_key: str) -> bool:
-    config = DATASETS[dataset_key]
+    config = _get_dataset_config(dataset_key)
     output_dir = RAW_DIR / config.raw_subdir
     output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -320,4 +324,4 @@ def download_dataset(dataset_key: str) -> bool:
 
 
 def download_all() -> dict[str, bool]:
-    return {key: download_dataset(key) for key in DATASETS.keys()}
+    return _run_for_all(download_dataset)

@@ -39,6 +39,12 @@ def run_download(dataset: str) -> int:
     return print_results_summary("DOWNLOAD SUMMARY", {dataset: result})
 
 
+def run_all(dataset: str) -> int:
+    download_code = run_download(dataset)
+    process_code = run_process(dataset)
+    return 0 if download_code == 0 and process_code == 0 else 1
+
+
 def main() -> int:
     parser = build_parser()
     args = parser.parse_args()
@@ -50,14 +56,12 @@ def main() -> int:
     print(f"Raw data dir:     {RAW_DIR}")
     print(f"Cleaned data dir: {CLEANED_DIR}")
 
-    if args.action == "process":
-        return run_process(args.dataset)
-    if args.action == "download":
-        return run_download(args.dataset)
-
-    download_code = run_download(args.dataset)
-    process_code = run_process(args.dataset)
-    return 0 if download_code == 0 and process_code == 0 else 1
+    handlers = {
+        "process": run_process,
+        "download": run_download,
+        "all": run_all,
+    }
+    return handlers[args.action](args.dataset)
 
 
 if __name__ == "__main__":

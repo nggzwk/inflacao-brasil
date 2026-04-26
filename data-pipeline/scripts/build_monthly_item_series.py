@@ -20,7 +20,7 @@ from decimal import Decimal, InvalidOperation
 import importlib
 import os
 from pathlib import Path
-from typing import Any
+from typing import Any, Protocol
 
 
 @dataclass(frozen=True)
@@ -72,6 +72,16 @@ def _parse_args() -> argparse.Namespace:
         action="store_true",
         help="Skip file load and only refresh monthly aggregates",
     )
+    parser.add_argument(
+        "--month-ref-source",
+        choices=("reference_date", "source_file_name"),
+        default="reference_date",
+        help=(
+            "How month_ref is derived. "
+            "reference_date uses data_pesquisa (default); "
+            "source_file_name uses standardized_YYYY-MM-DD filename."
+        ),
+    )
     return parser.parse_args()
 
 
@@ -116,6 +126,9 @@ def _parse_optional_decimal(value: str) -> Decimal | None:
 
 
 class ObservationParser:
+    def __init__(self, month_ref_resolver: "MonthRefResolver") -> None:
+        self._month_ref_resolver = month_ref_resolver
+
     def parse(self, raw: dict[str, str], source_file: str) -> PriceObservation | None:
         try:
             reference_date = _parse_date(raw.get("data_pesquisa", ""))
@@ -128,7 +141,7 @@ class ObservationParser:
 
         return PriceObservation(
             reference_date=reference_date,
-            month_ref=reference_date.replace(day=1),
+            month_ref=self._month_ref_resolver.resolve(reference_date, source_file),
             rede=(raw.get("rede") or "").strip(),
             endereco=(raw.get("endereco") or "").strip(),
             produto=(raw.get("produto") or "").strip(),
@@ -143,8 +156,39 @@ class ObservationParser:
         )
 
 
+class MonthRefResolver(Protocol):
+    def resolve(self, reference_date: date, source_file: str) -> date:
+        ...
+
+
+class ReferenceDateMonthRefResolver:
+    def resolve(self, reference_date: date, source_file: str) -> date:
+        return reference_date.replace(day=1)
+
+
+class SourceFileMonthRefResolver:
+    def resolve(self, reference_date: date, source_file: str) -> date:
+        # Expected source file format: standardized_YYYY-MM-DD.csv
+        stem = Path(source_file).stem
+        prefix = "standardized_"
+        if not stem.startswith(prefix):
+            return reference_date.replace(day=1)
+
+        date_part = stem[len(prefix):]
+        try:
+            parsed = datetime.strptime(date_part, "%Y-%m-%d").date()
+        except ValueError:
+            return reference_date.replace(day=1)
+        return parsed.replace(day=1)
+
+
+class RowParser(Protocol):
+    def parse(self, raw: dict[str, str], source_file: str) -> PriceObservation | None:
+        ...
+
+
 class CsvObservationLoader:
-    def __init__(self, parser: ObservationParser) -> None:
+    def __init__(self, parser: RowParser) -> None:
         self._parser = parser
 
     def iter_rows(self, file_path: Path) -> list[tuple]:
@@ -200,8 +244,21 @@ class MonthlySeriesRepository:
             cur.execute("SELECT inflacao_brasil.refresh_item_monthly_price()")
 
 
+class ObservationLoader(Protocol):
+    def iter_rows(self, file_path: Path) -> list[tuple]:
+        ...
+
+
+class MonthlyRepository(Protocol):
+    def replace_source_file_rows(self, source_file: str, rows: list[tuple]) -> None:
+        ...
+
+    def refresh_item_monthly_price(self) -> None:
+        ...
+
+
 class MonthlySeriesService:
-    def __init__(self, loader: CsvObservationLoader, repository: MonthlySeriesRepository) -> None:
+    def __init__(self, loader: ObservationLoader, repository: MonthlyRepository) -> None:
         self._loader = loader
         self._repository = repository
 
@@ -244,8 +301,13 @@ def main() -> int:
 
     try:
         with psycopg.connect(database_url) as conn:
+            if args.month_ref_source == "source_file_name":
+                month_ref_resolver: MonthRefResolver = SourceFileMonthRefResolver()
+            else:
+                month_ref_resolver = ReferenceDateMonthRefResolver()
+
             service = MonthlySeriesService(
-                loader=CsvObservationLoader(ObservationParser()),
+                loader=CsvObservationLoader(ObservationParser(month_ref_resolver)),
                 repository=MonthlySeriesRepository(conn),
             )
             if not args.refresh_only:
