@@ -80,7 +80,7 @@ export async function getVeggieBasketItems(
       ? `${API_BASE_URL}/api/vegetable-basket/items/price?month_ref=${month_ref}`
       : `${API_BASE_URL}/api/vegetable-basket/items/price`;
 
-    const res = await fetch(url, { next: { revalidate: 604800 } });
+    const res = await fetch(url, { next: { revalidate: 86400 } });
     if (!res.ok) return null;
     return (await res.json()) as VeggieBasketApiResponse;
   } catch {
@@ -101,10 +101,10 @@ export async function getVeggieBasketSummaryProps(): Promise<BasketSummaryProps>
   try {
     const [itemsResponse, inflationResponse] = await Promise.all([
       fetch(`${API_BASE_URL}/api/vegetable-basket/items/price`, {
-        next: { revalidate: 604800 },
+        next: { revalidate: 86400 },
       }),
       fetch(`${API_BASE_URL}/api/vegetable-basket/inflation/month`, {
-        next: { revalidate: 604800 },
+        next: { revalidate: 86400 },
       }),
     ]);
 
@@ -149,11 +149,11 @@ export async function getVeggieBasketDataForMonth(
   try {
     const [itemsRes, inflationRes] = await Promise.all([
       fetch(`${API_BASE_URL}/api/vegetable-basket/items/price?month_ref=${month_ref}`, {
-        next: { revalidate: 604800 },
+        next: { revalidate: 86400 },
       }),
       fetch(
         `${API_BASE_URL}/api/vegetable-basket/inflation/month?month_ref=${month_ref}`,
-        { next: { revalidate: 604800 } }
+        { next: { revalidate: 86400 } }
       ),
     ]);
 
@@ -196,7 +196,7 @@ export async function getVeggieAvailableMonths(year: number): Promise<string[]> 
       const month_ref = `${year}-${String(i + 1).padStart(2, "0")}`;
       return fetch(
         `${API_BASE_URL}/api/vegetable-basket/items/price?month_ref=${month_ref}`,
-        { next: { revalidate: 604800 } }
+        { next: { revalidate: 86400 } }
       )
         .then(async (res) => {
           if (!res.ok) return null;
